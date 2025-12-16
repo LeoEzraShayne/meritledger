@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Merit Ledger User Guide">
+    <title>User Guide - Merit Ledger</title>
+    <link rel="icon" href="ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .guide-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .guide-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .guide-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .guide-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border-left: 2px solid var(--bg-light);
+            margin-bottom: 1rem;
+        }
+        
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: -1rem;
+            top: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="ic_launcher.png" alt="Merit Ledger logo">
+                </div>
+                <span>Merit Ledger</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="guide.html" class="active">EN</a>
+                    <span class="separator">|</span>
+                    <a href="ja/guide.html">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="zh/guide.html">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">User Guide</h1>
+        <p class="page-subtitle">Get started with Merit Ledger</p>
+
+        <div class="guide-section">
+            <h2>🚀 Quick Start</h2>
+            <p>Merit Ledger is a simple tool for self-reflection. Here's how to get started:</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>Download and Install</strong><br>
+                    Download and install Merit Ledger from the app store.
+                </li>
+                <li>
+                    <strong>First Launch</strong><br>
+                    Open the app to see the welcome screen.
+                </li>
+                <li>
+                    <strong>Start Recording</strong><br>
+                    Tap "Record Positive" or "Record Negative" on the home screen to begin documenting your actions.
+                </li>
+            </ol>
+        </div>
+
+        <div class="guide-section">
+            <h2>📝 How to Record Entries</h2>
+            
+            <h3>Recording Positive Actions</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>Select Type</strong><br>
+                    Tap "Record Positive" to enter the recording page.
+                </li>
+                <li>
+                    <strong>Choose Value</strong><br>
+                    Select an appropriate value level based on the action:
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>1 point: Small positive actions</li>
+                        <li>10 points: Moderate positive actions</li>
+                        <li>30 points: Significant positive actions</li>
+                        <li>100 points: Major positive actions</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Add Details</strong><br>
+                    Optionally add notes, upload photos, or record audio to make the entry more complete.
+                </li>
+                <li>
+                    <strong>Save Entry</strong><br>
+                    Tap save to complete the recording.
+                </li>
+            </ol>
+            
+            <h3>Recording Negative Actions</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>Select Type</strong><br>
+                    Tap "Record Negative" to enter the recording page.
+                </li>
+                <li>
+                    <strong>Choose Value</strong><br>
+                    Select an appropriate value level based on the action:
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>1 point: Minor negative actions</li>
+                        <li>10 points: Moderate negative actions</li>
+                        <li>30 points: Significant negative actions</li>
+                        <li>100 points: Major negative actions</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Add Details</strong><br>
+                    Document specific circumstances to help identify patterns and areas for improvement.
+                </li>
+                <li>
+                    <strong>Save Entry</strong><br>
+                    Tap save to complete the recording.
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Recording negative actions helps identify patterns and supports personal growth through self-reflection.
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>📊 Viewing Statistics</h2>
+            
+            <h3>Today's Summary</h3>
+            <p>View today's cumulative positive and negative actions on the home screen, updated in real-time.</p>
+            
+            <h3>Weekly Trends</h3>
+            <p>In the "Weekly Trends" section on the home screen, view charts showing weekly patterns to understand your progress.</p>
+            
+            <h3>History</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>Open Calendar</strong><br>
+                    Tap "History Calendar" on the home screen to open the calendar page.
+                </li>
+                <li>
+                    <strong>Select Date</strong><br>
+                    Choose a date with entries (marked on the calendar).
+                </li>
+                <li>
+                    <strong>View Details</strong><br>
+                    Tap a date to view all entries and daily totals for that day.
+                </li>
+            </ol>
+            
+            <h3>Summary Page</h3>
+            <p>Tap "Summary" on the home screen to view total positive and negative actions since you started using the app.</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>📈 Progress Index</h2>
+            <p>The Progress Index is a calculated metric based on your entries, reflecting your overall progress.</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>View Current Level</strong><br>
+                    In the "Progress Index" section on the home screen, see your current level (Dim, Glimmer, Bright, Daylight, Radiant).
+                </li>
+                <li>
+                    <strong>View Trends</strong><br>
+                    See the 30-day trend to understand your progress over time.
+                </li>
+                <li>
+                    <strong>Improve Level</strong><br>
+                    By consistently recording positive actions and reducing negative ones, you can improve your progress index level.
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> The Progress Index is automatically calculated based on action ratios and cumulative values. Consistent tracking supports improvement.
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>⚙️ Settings</h2>
+            
+            <h3>Language Settings</h3>
+            <ol class="step-list">
+                <li>Go to Settings</li>
+                <li>Select "Language"</li>
+                <li>Choose English, Japanese, or Chinese</li>
+                <li>The interface will switch immediately</li>
+            </ol>
+            
+            <h3>Theme Settings</h3>
+            <ol class="step-list">
+                <li>Go to Settings</li>
+                <li>Select "Theme"</li>
+                <li>Choose Light or Dark theme</li>
+                <li>The theme will apply immediately and be saved</li>
+            </ol>
+            
+            <h3>Account Login</h3>
+            <p>After logging in, your data will automatically sync to the cloud, allowing multi-device access and improved data security.</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>💡 Tips</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>Daily Recording</strong><br>
+                    <span style="color: var(--text-secondary);">Develop a habit of daily recording. Review your day before sleep.</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>Honest Recording</strong><br>
+                    <span style="color: var(--text-secondary);">Record honestly. This is the foundation of self-reflection.</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>Regular Review</strong><br>
+                    <span style="color: var(--text-secondary);">Review your entries regularly to identify patterns and areas for improvement.</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>Consistent Tracking</strong><br>
+                    <span style="color: var(--text-secondary);">Consistent recording helps track progress and supports personal growth.</span>
+                </li>
+                <li style="padding: 1rem 0;">
+                    <strong>Pattern Recognition</strong><br>
+                    <span style="color: var(--text-secondary);">Use statistics and history to identify patterns and make informed decisions.</span>
+                </li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+</body>
+</html>

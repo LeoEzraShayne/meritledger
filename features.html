@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Merit Ledger - Feature Overview">
+    <title>Features - Merit Ledger</title>
+    <link rel="icon" href="ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .feature-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .feature-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .feature-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="ic_launcher.png" alt="Merit Ledger logo">
+                </div>
+                <span>Merit Ledger</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="features.html" class="active">EN</a>
+                    <span class="separator">|</span>
+                    <a href="ja/features.html">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="zh/features.html">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Features</h1>
+        <p class="page-subtitle">Comprehensive overview of Merit Ledger capabilities</p>
+
+        <div class="feature-section">
+            <h2>📝 Daily Recording</h2>
+            <p>Record daily actions and behaviors for systematic self-reflection.</p>
+            
+            <h3>Recording Positive Actions</h3>
+            <ul class="feature-list">
+                <li>Multiple value levels: 1, 10, 30, 100 points</li>
+                <li>Each level includes descriptions to help accurate assessment</li>
+                <li>Add notes to document specific circumstances</li>
+                <li>Upload photos to preserve evidence</li>
+                <li>Record audio for quick documentation</li>
+            </ul>
+            
+            <h3>Recording Negative Actions</h3>
+            <ul class="feature-list">
+                <li>Multiple value levels: 1, 10, 30, 100 points</li>
+                <li>Each level includes descriptions to help recognize patterns</li>
+                <li>Add notes to document specific circumstances</li>
+                <li>Upload photos and record audio</li>
+                <li>Recording helps identify areas for improvement</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📊 Statistics</h2>
+            <p>View data summaries to understand your progress and patterns.</p>
+            
+            <h3>Today's Summary</h3>
+            <ul class="feature-list">
+                <li>Display today's cumulative positive and negative actions</li>
+                <li>Real-time updates</li>
+                <li>Clear numerical presentation</li>
+            </ul>
+            
+            <h3>Weekly Trends</h3>
+            <ul class="feature-list">
+                <li>Chart visualization of weekly patterns</li>
+                <li>Understand weekly behavior trends</li>
+                <li>Identify patterns and areas for improvement</li>
+            </ul>
+            
+            <h3>Monthly Summary</h3>
+            <ul class="feature-list">
+                <li>Total positive and negative actions for the month</li>
+                <li>Review monthly progress</li>
+            </ul>
+            
+            <h3>Cumulative Statistics</h3>
+            <ul class="feature-list">
+                <li>View total positive and negative actions since starting</li>
+                <li>Accessible from the summary page</li>
+                <li>Track long-term progress</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📈 Progress Index</h2>
+            <p>Calculated index based on your records, reflecting your overall progress.</p>
+            
+            <ul class="feature-list">
+                <li>Five levels: Dim, Glimmer, Bright, Daylight, Radiant</li>
+                <li>Automatically calculated based on action ratios and cumulative values</li>
+                <li>Display current level and 30-day trend</li>
+                <li>Visual representation of progress</li>
+                <li>Encourages consistent tracking and improvement</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📅 History</h2>
+            <p>View past entries in calendar format, review your journey.</p>
+            
+            <h3>Calendar View</h3>
+            <ul class="feature-list">
+                <li>Monthly calendar display</li>
+                <li>Dates with entries are marked</li>
+                <li>Quick navigation to any date</li>
+            </ul>
+            
+            <h3>Date Details</h3>
+            <ul class="feature-list">
+                <li>Click a date to view detailed records</li>
+                <li>Display all entries for that day</li>
+                <li>Show daily cumulative totals</li>
+                <li>Edit and delete entries</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>🌍 Multi-language Support</h2>
+            <p>Available in English, Japanese, and Chinese for users from different cultural backgrounds.</p>
+            
+            <ul class="feature-list">
+                <li>English: Full support</li>
+                <li>Japanese: Full support</li>
+                <li>Chinese: Full support</li>
+                <li>All interface elements translated</li>
+                <li>Switch language anytime in settings</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>🎨 Theme Options</h2>
+            <p>Light and dark themes for different usage scenarios.</p>
+            
+            <ul class="feature-list">
+                <li>Light theme: Suitable for daytime use</li>
+                <li>Dark theme: Suitable for nighttime use, reduces eye strain</li>
+                <li>Switch anytime in settings</li>
+                <li>Theme preference is saved automatically</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>☁️ Data Sync</h2>
+            <p>After logging in, sync data to the cloud for multi-device access.</p>
+            
+            <ul class="feature-list">
+                <li>Automatic sync after account registration</li>
+                <li>Multi-device login with real-time sync</li>
+                <li>Photos and audio files are also synced</li>
+                <li>Data stored securely with encryption</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+</body>
+</html>
