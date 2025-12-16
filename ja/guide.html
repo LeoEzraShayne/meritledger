@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="功過格ユーザーガイド">
+    <title>ユーザーガイド - 功過格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Noto Serif JP', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.8;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .guide-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .guide-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .guide-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .guide-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border-left: 2px solid var(--bg-light);
+            margin-bottom: 1rem;
+        }
+        
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: -1rem;
+            top: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../ic_launcher.png" alt="功過格 ロゴ">
+                </div>
+                <span>功過格</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">ホーム</a></li>
+                <li><a href="features.html">機能</a></li>
+                <li><a href="guide.html">ガイド</a></li>
+                <li><a href="download.html">ダウンロード</a></li>
+                <li><a href="about.html">について</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="../guide.html">EN</a>
+                    <span class="separator">|</span>
+                    <a href="guide.html" class="active">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="../zh/guide.html">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">ユーザーガイド</h1>
+        <p class="page-subtitle">功過格の使い方</p>
+
+        <div class="guide-section">
+            <h2>🚀 クイックスタート</h2>
+            <p>功過格は自己省察のためのシンプルなツールです。始め方をご紹介します：</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>ダウンロードとインストール</strong><br>
+                    アプリストアから功過格をダウンロードしてインストールします。
+                </li>
+                <li>
+                    <strong>初回起動</strong><br>
+                    アプリを開いてようこそ画面を確認します。
+                </li>
+                <li>
+                    <strong>記録を開始</strong><br>
+                    ホーム画面の「良い行いを記録」または「悪い行いを記録」をタップして、行動の記録を開始します。
+                </li>
+            </ol>
+        </div>
+
+        <div class="guide-section">
+            <h2>📝 エントリの記録方法</h2>
+            
+            <h3>良い行いの記録</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>種類を選択</strong><br>
+                    「良い行いを記録」をタップして記録ページに入ります。
+                </li>
+                <li>
+                    <strong>価値を選択</strong><br>
+                    行動に基づいて適切な価値レベルを選択します：
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>1ポイント：小さな良い行い</li>
+                        <li>10ポイント：中程度の良い行い</li>
+                        <li>30ポイント：重要な良い行い</li>
+                        <li>100ポイント：大きな良い行い</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>詳細を追加</strong><br>
+                    オプションでメモを追加し、写真をアップロード、または音声を録音してエントリをより完全にします。
+                </li>
+                <li>
+                    <strong>エントリを保存</strong><br>
+                    保存をタップして記録を完了します。
+                </li>
+            </ol>
+            
+            <h3>悪い行いの記録</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>種類を選択</strong><br>
+                    「悪い行いを記録」をタップして記録ページに入ります。
+                </li>
+                <li>
+                    <strong>価値を選択</strong><br>
+                    行動に基づいて適切な価値レベルを選択します：
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>1ポイント：軽微な悪い行い</li>
+                        <li>10ポイント：中程度の悪い行い</li>
+                        <li>30ポイント：重要な悪い行い</li>
+                        <li>100ポイント：大きな悪い行い</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>詳細を追加</strong><br>
+                    特定の状況を記録し、パターンと改善点を特定するのに役立ちます。
+                </li>
+                <li>
+                    <strong>エントリを保存</strong><br>
+                    保存をタップして記録を完了します。
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 ヒント：</strong> 悪い行いを記録することで、パターンを特定し、自己省察を通じて個人成長を支援します。
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>📊 統計の表示</h2>
+            
+            <h3>今日の要約</h3>
+            <p>ホーム画面で今日の累積的な良い行いと悪い行いを表示します。リアルタイムで更新されます。</p>
+            
+            <h3>週間トレンド</h3>
+            <p>ホーム画面の「週間トレンド」セクションで、週間パターンを示すチャートを表示し、進捗状況を理解します。</p>
+            
+            <h3>履歴</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>カレンダーを開く</strong><br>
+                    ホーム画面の「履歴カレンダー」をタップしてカレンダーページを開きます。
+                </li>
+                <li>
+                    <strong>日付を選択</strong><br>
+                    エントリがある日付を選択します（カレンダーにマークされます）。
+                </li>
+                <li>
+                    <strong>詳細を表示</strong><br>
+                    日付をタップして、その日のすべてのエントリと日次の合計を表示します。
+                </li>
+            </ol>
+            
+            <h3>要約ページ</h3>
+            <p>ホーム画面の「要約」をタップして、アプリの使用開始以来の良い行いと悪い行いの合計を表示します。</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>📈 進捗指数</h2>
+            <p>進捗指数は、エントリに基づいて計算された指標で、全体的な進捗状況を反映します。</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>現在のレベルを表示</strong><br>
+                    ホーム画面の「進捗指数」セクションで、現在のレベルを確認します（暗、微光、明光、昼明、輝耀）。
+                </li>
+                <li>
+                    <strong>トレンドを表示</strong><br>
+                    30日間のトレンドを確認して、時間をかけた進捗状況を理解します。
+                </li>
+                <li>
+                    <strong>レベルを改善</strong><br>
+                    一貫して良い行いを記録し、悪い行いを減らすことで、進捗指数レベルを改善できます。
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 ヒント：</strong> 進捗指数は行動比率と累積値に基づいて自動計算されます。一貫した追跡が改善を支援します。
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>⚙️ 設定</h2>
+            
+            <h3>言語設定</h3>
+            <ol class="step-list">
+                <li>設定に移動</li>
+                <li>「言語」を選択</li>
+                <li>英語、日本語、または中国語を選択</li>
+                <li>インターフェースがすぐに切り替わります</li>
+            </ol>
+            
+            <h3>テーマ設定</h3>
+            <ol class="step-list">
+                <li>設定に移動</li>
+                <li>「テーマ」を選択</li>
+                <li>ライトまたはダークテーマを選択</li>
+                <li>テーマがすぐに適用され、保存されます</li>
+            </ol>
+            
+            <h3>アカウントログイン</h3>
+            <p>ログイン後、データは自動的にクラウドに同期され、マルチデバイスアクセスとデータセキュリティの向上が可能になります。</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>💡 ヒント</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>日々の記録</strong><br>
+                    <span style="color: var(--text-secondary);">日々の記録の習慣を身につけます。就寝前に一日を振り返ります。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>誠実な記録</strong><br>
+                    <span style="color: var(--text-secondary);">誠実に記録します。これは自己省察の基礎です。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>定期的な振り返り</strong><br>
+                    <span style="color: var(--text-secondary);">エントリを定期的に確認して、パターンと改善点を特定します。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>一貫した追跡</strong><br>
+                    <span style="color: var(--text-secondary);">一貫した記録により、進捗を追跡し、個人成長を支援します。</span>
+                </li>
+                <li style="padding: 1rem 0;">
+                    <strong>パターン認識</strong><br>
+                    <span style="color: var(--text-secondary);">統計と履歴を使用してパターンを特定し、情報に基づいた決定を行います。</span>
+                </li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← ホームに戻る</a>
+    </div>
+</body>
+</html>

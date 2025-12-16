@@ -1,1 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="功過格について">
+    <title>について - 功過格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Noto Serif JP', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.8;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
 
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .content-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .quote-source {
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        
+        .timeline {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--bg-light);
+        }
+        
+        .timeline li {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+        }
+        
+        .timeline li:before {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .timeline-year {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../ic_launcher.png" alt="功過格 ロゴ">
+                </div>
+                <span>功過格</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">ホーム</a></li>
+                <li><a href="features.html">機能</a></li>
+                <li><a href="guide.html">ガイド</a></li>
+                <li><a href="download.html">ダウンロード</a></li>
+                <li><a href="about.html">について</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="../about.html">EN</a>
+                    <span class="separator">|</span>
+                    <a href="about.html" class="active">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="../zh/about.html">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">功過格について</h1>
+        <p class="page-subtitle">自己省察と個人成長のためのツール</p>
+
+        <div class="content-section">
+            <h2>📖 目的</h2>
+            <p>
+                功過格は、長期的な自己省察と行動記録のためのデジタルツールです。
+                ユーザーが日々の行動を記録し、パターンを特定し、時間をかけて進捗を追跡することを支援します。
+            </p>
+            
+            <h3>核心価値</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>自己省察：</strong>行動を記録することで自己認識を深め、強みと改善点を認識します
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>継続的改善：</strong>定期的な記録によりパターンを特定し、個人成長を支援します
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>プライバシー重視：</strong>データはデフォルトでローカルに保存され、オプションでクラウド同期が可能です
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>多言語対応：</strong>英語、日本語、中国語で利用可能です
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>🎯 仕組み</h2>
+            <p>
+                功過格は、日々の行動を記録し、振り返るための構造化された方法を提供します。
+                ユーザーはエントリを分類し、メモやメディアを追加し、時間をかけて統計を表示できます。
+            </p>
+            
+            <h3>記録</h3>
+            <p>
+                メモ、写真、音声で日々の行動を記録します。エントリを分類して、
+                異なるタイプの行動とパターンを追跡します。
+            </p>
+            
+            <h3>分析</h3>
+            <p>
+                統計とトレンドを表示して進捗を理解します。履歴データを確認して
+                パターンと改善点を特定します。
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>💬 お問い合わせ</h2>
+            <p>ご質問、ご提案、またはフィードバックがございましたら、お気軽にお問い合わせください：</p>
+            <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                <li style="padding: 0.5rem 0;">
+                    <strong>メール：</strong> meritledger@163.com
+                </li>
+                <li style="padding: 0.5rem 0;">
+                    <strong>アプリバージョン：</strong> 1.0.0
+                </li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← ホームに戻る</a>
+    </div>
+</body>
+</html>
