@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="功过格使用指南">
+    <title>使用指南 - 功过格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .guide-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .guide-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .guide-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .guide-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border-left: 2px solid var(--bg-light);
+            margin-bottom: 1rem;
+        }
+        
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: -1rem;
+            top: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../ic_launcher.png" alt="功过格 logo">
+                </div>
+                <span>功过格</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="features.html">功能</a></li>
+                <li><a href="guide.html">使用指南</a></li>
+                <li><a href="download.html">下载</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="../guide.html">EN</a>
+                    <span class="separator">|</span>
+                    <a href="../ja/guide.html">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="guide.html" class="active">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">使用指南</h1>
+        <p class="page-subtitle">快速上手，开始您的修身之旅</p>
+
+        <div class="guide-section">
+            <h2>🚀 快速开始</h2>
+            <p>功过格是一款简单易用的修身应用。以下是快速上手指南：</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>下载并安装应用</strong><br>
+                    从应用市场下载并安装功过格应用。
+                </li>
+                <li>
+                    <strong>首次启动</strong><br>
+                    打开应用，您会看到启动页面和"命自我立，福自己求"的格言。
+                </li>
+                <li>
+                    <strong>开始记录</strong><br>
+                    点击首页的"记一功"或"记一过"按钮，开始记录您的善行或过失。
+                </li>
+            </ol>
+        </div>
+
+        <div class="guide-section">
+            <h2>📝 如何记录功过</h2>
+            
+            <h3>记录功（善行）</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>选择类型</strong><br>
+                    点击"记一功"按钮，进入记录页面。
+                </li>
+                <li>
+                    <strong>选择分值</strong><br>
+                    根据善行的大小选择合适的分值：
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>一功：拾金不昧、善语待人</li>
+                        <li>十功：施财救急、谏止恶行</li>
+                        <li>三十功：救人危难、成人之美</li>
+                        <li>百功：救人一命、活命无数</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>添加详情</strong><br>
+                    可选择性添加备注说明、上传图片或录制语音，让记录更完整。
+                </li>
+                <li>
+                    <strong>保存记录</strong><br>
+                    点击保存按钮，记录成功后会显示"善已存"的提示。
+                </li>
+            </ol>
+            
+            <h3>记录过（过失）</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>选择类型</strong><br>
+                    点击"记一过"按钮，进入记录页面。
+                </li>
+                <li>
+                    <strong>选择分值</strong><br>
+                    根据过失的大小选择合适的分值：
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>一过：轻慢之失、言行不谨</li>
+                        <li>十过：见义不为、恶语伤人</li>
+                        <li>三十过：损人利己、见死不救</li>
+                        <li>百过：害人性命、大恶不赦</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>添加详情</strong><br>
+                    记录具体情况，帮助自己认识过失，以便改过。
+                </li>
+                <li>
+                    <strong>保存记录</strong><br>
+                    点击保存按钮，记录成功后会显示"过已存"的提示。
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 提示：</strong> 记录过失是为了改过，培养自省习惯。正如《了凡四训》所说："过由心造，亦由心改"。
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>📊 查看统计</h2>
+            
+            <h3>今日统计</h3>
+            <p>在首页可以看到今日累计的功和过，实时更新。</p>
+            
+            <h3>本周趋势</h3>
+            <p>在首页的"本周趋势"区域，可以看到本周的功过趋势图表，了解一周的修行状态。</p>
+            
+            <h3>历史查看</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>进入日历</strong><br>
+                    点击首页的"历史日历"按钮，进入日历页面。
+                </li>
+                <li>
+                    <strong>选择日期</strong><br>
+                    在日历上选择有记录的日期（会有标记）。
+                </li>
+                <li>
+                    <strong>查看详情</strong><br>
+                    点击日期，可以查看该日的所有记录和累计功过。
+                </li>
+            </ol>
+            
+            <h3>功德碑</h3>
+            <p>点击首页的"功德碑"按钮，可以查看自使用以来的总功和总过，见证长期的修行积累。</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>📈 命运刻度</h2>
+            <p>命运刻度是根据您的功过记录计算出的综合指数，反映您的修行状态。</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>查看当前等级</strong><br>
+                    在首页的"命运刻度"区域，可以看到当前的等级（暗淡、微光、明光、昼明、辉耀）。
+                </li>
+                <li>
+                    <strong>查看趋势</strong><br>
+                    可以看到近30日的趋势，了解自己的进步情况。
+                </li>
+                <li>
+                    <strong>提升等级</strong><br>
+                    通过持续记录善行，减少过失，可以提升命运刻度等级。
+                </li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💡 提示：</strong> 命运刻度是根据功过比例和累计值自动计算的，持续修行可以改变命运。
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>⚙️ 设置与个性化</h2>
+            
+            <h3>语言设置</h3>
+            <ol class="step-list">
+                <li>进入设置页面</li>
+                <li>选择"语言"选项</li>
+                <li>选择中文、日文或英文</li>
+                <li>界面会立即切换语言</li>
+            </ol>
+            
+            <h3>主题设置</h3>
+            <ol class="step-list">
+                <li>进入设置页面</li>
+                <li>选择"主题"选项</li>
+                <li>选择浅色或深色主题</li>
+                <li>主题会立即应用并保存</li>
+            </ol>
+            
+            <h3>账号登录</h3>
+            <p>登录账号后，您的数据会自动同步到云端，可以在多设备上使用，数据更安全。</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>💡 使用建议</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>每日记录</strong><br>
+                    <span style="color: var(--text-secondary);">养成每日记录的习惯，在睡前回顾一天的功过。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>诚实记录</strong><br>
+                    <span style="color: var(--text-secondary);">诚实地记录自己的功过，这是自省的基础。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>及时改过</strong><br>
+                    <span style="color: var(--text-secondary);">记录过失后，要及时改过，避免重复犯错。</span>
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid var(--bg-light);">
+                    <strong>持续修行</strong><br>
+                    <span style="color: var(--text-secondary);">持续记录和修行，才能改变命运，提升命运刻度。</span>
+                </li>
+                <li style="padding: 1rem 0;">
+                    <strong>定期回顾</strong><br>
+                    <span style="color: var(--text-secondary);">定期查看统计和历史记录，了解自己的进步和不足。</span>
+                </li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+</body>
+</html>

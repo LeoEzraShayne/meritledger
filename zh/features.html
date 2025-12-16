@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="功过格应用功能详细介绍">
+    <title>功能说明 - 功过格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .feature-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .feature-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .feature-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../ic_launcher.png" alt="功过格 logo">
+                </div>
+                <span>功过格</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="features.html">功能</a></li>
+                <li><a href="guide.html">使用指南</a></li>
+                <li><a href="download.html">下载</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="../features.html">EN</a>
+                    <span class="separator">|</span>
+                    <a href="../ja/features.html">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="features.html" class="active">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">功能说明</h1>
+        <p class="page-subtitle">全面了解功过格的所有功能</p>
+
+        <div class="feature-section">
+            <h2>📝 每日记录</h2>
+            <p>记录每日的善行（功）与过失（过），是功过格的核心功能。</p>
+            
+            <h3>记录功</h3>
+            <ul class="feature-list">
+                <li>支持不同分值：一功、十功、三十功、百功</li>
+                <li>每个分值都有对应的说明，帮助您准确评估</li>
+                <li>可添加备注说明，记录具体情况</li>
+                <li>支持上传图片，保存相关证据</li>
+                <li>支持语音记录，方便快速记录</li>
+            </ul>
+            
+            <h3>记录过</h3>
+            <ul class="feature-list">
+                <li>支持不同分值：一过、十过、三十过、百过</li>
+                <li>每个分值都有对应的说明，帮助您认识过失</li>
+                <li>可添加备注说明，记录具体情况</li>
+                <li>支持上传图片和语音记录</li>
+                <li>记录过失是为了改过，培养自省习惯</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📊 统计分析</h2>
+            <p>通过数据统计，了解自己的修行状态和进步情况。</p>
+            
+            <h3>今日统计</h3>
+            <ul class="feature-list">
+                <li>显示今日累计的功和过</li>
+                <li>实时更新，随时查看</li>
+                <li>使用中文小写数字显示，符合传统文化</li>
+            </ul>
+            
+            <h3>本周趋势</h3>
+            <ul class="feature-list">
+                <li>以图表形式展示本周的功过趋势</li>
+                <li>直观了解一周的修行状态</li>
+                <li>帮助发现规律和问题</li>
+            </ul>
+            
+            <h3>本月统计</h3>
+            <ul class="feature-list">
+                <li>统计本月的总功和总过</li>
+                <li>查看月度修行成果</li>
+            </ul>
+            
+            <h3>累计统计</h3>
+            <ul class="feature-list">
+                <li>显示自使用以来的总功和总过</li>
+                <li>在"功德碑"页面查看</li>
+                <li>见证长期的修行积累</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📈 命运刻度</h2>
+            <p>根据功过记录计算综合指数，反映您的修行状态。</p>
+            
+            <ul class="feature-list">
+                <li>五个等级：暗淡、微光、明光、昼明、辉耀</li>
+                <li>根据功过比例和累计值自动计算</li>
+                <li>显示当前等级和近30日趋势</li>
+                <li>直观反映命运的变化</li>
+                <li>激励持续修行，提升等级</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>📅 历史查看</h2>
+            <p>以日历形式查看历史记录，回顾过往的每一天。</p>
+            
+            <h3>日历视图</h3>
+            <ul class="feature-list">
+                <li>按月显示日历</li>
+                <li>有记录的日期会有标记</li>
+                <li>显示农历日期，符合传统文化</li>
+                <li>快速定位到任意日期</li>
+            </ul>
+            
+            <h3>日期详情</h3>
+            <ul class="feature-list">
+                <li>点击日期查看该日的详细记录</li>
+                <li>显示该日的所有功过记录</li>
+                <li>显示该日的累计功过</li>
+                <li>支持编辑和删除记录</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>🌍 多语言支持</h2>
+            <p>支持中文、日文、英文三种语言，让不同文化背景的用户都能使用。</p>
+            
+            <ul class="feature-list">
+                <li>中文：完整支持，包括农历显示</li>
+                <li>日文：完整支持，包括农历显示</li>
+                <li>英文：完整支持，不显示农历</li>
+                <li>所有界面元素都已翻译</li>
+                <li>在设置页面可随时切换语言</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>🎨 主题切换</h2>
+            <p>支持浅色和深色主题，适应不同使用场景。</p>
+            
+            <ul class="feature-list">
+                <li>浅色主题：适合白天使用</li>
+                <li>深色主题：适合夜间使用，保护眼睛</li>
+                <li>在设置页面可随时切换</li>
+                <li>主题设置会保存，下次打开自动应用</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h2>☁️ 数据同步</h2>
+            <p>登录后可同步数据到云端，多设备使用。</p>
+            
+            <ul class="feature-list">
+                <li>注册账号后自动同步</li>
+                <li>支持多设备登录，数据实时同步</li>
+                <li>图片和语音文件也会同步</li>
+                <li>数据安全加密存储</li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+</body>
+</html>

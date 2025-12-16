@@ -1,1 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="关于功过格和《了凡四训》">
+    <title>关于 - 功过格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2D6A4F;
+            --primary-dark: #1e4a35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
 
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .lang-switcher a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(45, 106, 79, 0.1);
+        }
+        
+        .lang-switcher .separator {
+            color: var(--border-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .content-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .quote-source {
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        
+        .timeline {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--bg-light);
+        }
+        
+        .timeline li {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+        }
+        
+        .timeline li:before {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .timeline-year {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../ic_launcher.png" alt="功过格 logo">
+                </div>
+                <span>功过格</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="features.html">功能</a></li>
+                <li><a href="guide.html">使用指南</a></li>
+                <li><a href="download.html">下载</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <a href="../about.html">EN</a>
+                    <span class="separator">|</span>
+                    <a href="../ja/about.html">日本語</a>
+                    <span class="separator">|</span>
+                    <a href="about.html" class="active">中文</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">关于功过格</h1>
+        <p class="page-subtitle">传承《了凡四训》智慧，命自我立，福自己求</p>
+
+        <div class="content-section">
+            <h2>📖 关于《了凡四训》</h2>
+            <p>
+                《了凡四训》是明代袁了凡（袁黄，1533-1606）所著的家训，分为立命之学、改过之法、积善之方、谦德之效四篇。
+                袁了凡通过记录功过格的方式，改变了原本被命数注定的命运，实现了"命自我立，福自己求"的人生转变。
+            </p>
+            
+            <div class="quote-box">
+                <p class="quote-text">
+                    "命自我立，福自己求"
+                </p>
+                <p class="quote-source">—— 袁了凡《了凡四训》</p>
+            </div>
+            
+            <h3>功过格的起源</h3>
+            <p>
+                功过格是一种传统的自我修身方法，通过记录每日的善行（功）和过失（过），培养自省习惯，提升个人修养。
+                袁了凡使用功过格三十余年，坚持不懈，终于改变了命运，并将这段经历写成《了凡四训》，传授子孙立命之道。
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>🎯 应用理念</h2>
+            <p>
+                功过格应用将这一传统修身方法数字化，让现代人也能通过每日记录功过，培养自省习惯，提升个人修养，改变自己的命运。
+            </p>
+            
+            <h3>核心价值</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>自省修身：</strong>通过记录功过，培养自省习惯，认识自己的优点和不足
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>改过迁善：</strong>记录过失是为了改过，持续修行可以改变命运
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>传承智慧：</strong>将《了凡四训》的智慧传承到数字时代
+                </li>
+                <li style="padding: 0.8rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--primary-color);">✓</span>
+                    <strong>多语言支持：</strong>支持中文、日文、英文，让不同文化背景的用户都能使用
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>📜 历史传承</h2>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-year">1606年</div>
+                    <p>袁了凡完成《了凡四训》，传授子孙立命之道</p>
+                </li>
+                <li>
+                    <div class="timeline-year">明代至今</div>
+                    <p>《了凡四训》成为中国传统修身经典，影响深远</p>
+                </li>
+                <li>
+                    <div class="timeline-year">2025年</div>
+                    <p>功过格应用上线，将传统智慧数字化，传承到新时代</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>💬 联系我们</h2>
+            <p>如果您有任何问题、建议或反馈，欢迎联系我们：</p>
+            <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                <li style="padding: 0.5rem 0;">
+                    <strong>邮箱：</strong> meritledger@163.com
+                </li>
+                <li style="padding: 0.5rem 0;">
+                    <strong>应用版本：</strong> 1.0.0
+                </li>
+                <li style="padding: 0.5rem 0;">
+                    <strong>传承：</strong> SINCE 1606
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>🙏 致谢</h2>
+            <p>
+                感谢《了凡四训》传承的智慧，感谢所有使用功过格应用的用户。
+                愿我们都能通过每日的修行，改变自己的命运，实现"命自我立，福自己求"。
+            </p>
+            
+            <div class="quote-box" style="margin-top: 2rem;">
+                <p class="quote-text">
+                    "过由心造，亦由心改"
+                </p>
+                <p class="quote-source">—— 袁了凡《了凡四训》</p>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+</body>
+</html>
