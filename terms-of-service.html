@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Terms of Service for Merit Ledger" />
+    <title>Terms of Service - Merit Ledger</title>
+    <link rel="icon" href="ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        background: var(--bg-light);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+
+      .lang-switcher .separator {
+        color: var(--border-color);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .meta-row:last-child {
+        border-bottom: none;
+      }
+
+      .meta-label {
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .meta-value {
+        color: var(--text-primary);
+      }
+
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .content-section.highlight {
+        background: rgba(45, 106, 79, 0.05);
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .content-section h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        white-space: pre-line;
+      }
+      /* ===== Terms typography (aligned with Privacy Policy) ===== */
+      .content-section .lead {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 1.25rem;
+      }
+
+      .policy-ol {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--text-secondary);
+      }
+
+      .policy-ol > li {
+        margin: 0.9rem 0;
+      }
+
+      .policy-ol .item-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.35rem;
+      }
+
+      .policy-ul {
+        margin: 0.35rem 0 0.2rem;
+        padding-left: 1.1rem;
+      }
+
+      .policy-ul li {
+        margin: 0.35rem 0;
+        line-height: 1.85;
+        color: var(--text-secondary);
+      }
+
+      .policy-ul li strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .callout {
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+        border-radius: 12px;
+        background: rgba(45, 106, 79, 0.06);
+        border: 1px solid rgba(45, 106, 79, 0.18);
+      }
+
+      .callout-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-btn:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .content-section {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <img src="ic_launcher.png" alt="Merit Ledger logo" />
+          </div>
+          <span>Merit Ledger</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="terms-of-service.html" class="active">EN</a>
+            <span class="separator">|</span>
+            <a href="ja/terms-of-service.html">日本語</a>
+            <span class="separator">|</span>
+            <a href="zh/terms-of-service.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-subtitle">Last Updated: 2026-01-05</p>
+
+      <!-- Meta Information -->
+      <div class="meta-card">
+        <div class="meta-row">
+          <span class="meta-label">Effective Date:</span>
+          <span class="meta-value">2026-01-05</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">App Name:</span>
+          <span class="meta-value">Merit Ledger</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Developer:</span>
+          <span class="meta-value">Merit Ledger Team</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contact Email:</span>
+          <span class="meta-value">meritledger@163.com</span>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <div class="content-section">
+        <h2>Introduction</h2>
+
+        <p class="lead">
+          Welcome to Merit Ledger (the “App”). These Terms of Service govern
+          your access to and use of the App and related websites (Official site:
+          https://official.meritledger.org).
+        </p>
+
+        <ul class="policy-ul">
+          <li>By using the App, you agree to be bound by these Terms.</li>
+          <li>
+            If you do not agree to these Terms, please stop using the App
+            immediately.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 1: Service -->
+      <div class="content-section">
+        <h2>1. Service</h2>
+
+        <p class="lead">
+          The App provides tools for personal self-recording and reflection.
+        </p>
+
+        <ul class="policy-ul">
+          <li><strong>Merit/fault records</strong></li>
+          <li><strong>Statistics and review</strong></li>
+          <li><strong>Optional multi-device synchronization</strong></li>
+          <li><strong>Optional image and audio attachments</strong></li>
+        </ul>
+
+        <p class="lead">
+          We may update, modify, or improve features from time to time, with
+          reasonable notice where practicable.
+        </p>
+      </div>
+
+      <!-- Section 2: Account & Login -->
+      <div class="content-section">
+        <h2>2. Account & Login</h2>
+
+        <p class="lead">
+          You may access the App using one of the following methods:
+        </p>
+
+        <ul class="policy-ul">
+          <li>
+            <strong>Email + verification code</strong> (registration and login)
+          </li>
+          <li><strong>Third-party login</strong> (e.g., Google)</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">Verification emails</div>
+          <ul class="policy-ul">
+            <li>
+              Verification codes are sent only to the email address you provide
+              for your own account.
+            </li>
+            <li>
+              These emails are <strong>transactional/security</strong> emails,
+              not marketing bulk emails.
+            </li>
+            <li>
+              Email delivery is handled via Amazon Web Services (AWS) Simple
+              Email Service (SES).
+            </li>
+          </ul>
+        </div>
+
+        <p class="lead">
+          You are responsible for all activity conducted under your account and
+          must not abuse authentication or verification features.
+        </p>
+      </div>
+
+      <!-- Section 3: User Conduct -->
+      <div class="content-section">
+        <h2>3. User Conduct</h2>
+
+        <p class="lead">When using the App, you agree that you will not:</p>
+
+        <ul class="policy-ul">
+          <li>Violate applicable laws or regulations</li>
+          <li>Infringe the rights of others or post illegal/harmful content</li>
+          <li>
+            Interfere with or disrupt the App (e.g., attacks, tampering, bulk
+            requests)
+          </li>
+          <li>Access or probe the service without authorization</li>
+        </ul>
+
+        <p class="lead">
+          We may restrict features, suspend, or terminate access if violations
+          are detected.
+        </p>
+      </div>
+
+      <!-- Section 4: Intellectual Property & User Content -->
+      <div class="content-section">
+        <h2>4. Intellectual Property & User Content</h2>
+
+        <p class="lead">
+          All software, design, and interface elements of the App are owned by
+          the developer, unless otherwise required by law.
+        </p>
+
+        <ul class="policy-ul">
+          <li>
+            Content you create (text, images, audio) generally remains yours.
+          </li>
+          <li>
+            You grant us a limited license to store, process, and display your
+            content solely to provide the service.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 5: Changes & Interruptions -->
+      <div class="content-section">
+        <h2>5. Changes & Interruptions</h2>
+
+        <p class="lead">
+          We may modify, suspend, or interrupt the service due to maintenance,
+          upgrades, security concerns, or force majeure events.
+        </p>
+
+        <p class="lead">
+          Where reasonably possible, we will provide advance notice and take
+          steps to protect user data.
+        </p>
+      </div>
+
+      <!-- Section 6: Disclaimer -->
+      <div class="content-section">
+        <h2>6. Disclaimer</h2>
+
+        <p class="lead">
+          The App is provided on an “as is” basis, without warranties of any
+          kind.
+        </p>
+
+        <ul class="policy-ul">
+          <li>We do not guarantee uninterrupted or error-free service.</li>
+          <li>
+            We are not responsible for failures caused by third-party services
+            (e.g., Google login or email delivery providers).
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 7: Termination & Account Deletion -->
+      <div class="content-section">
+        <h2>7. Termination & Account Deletion</h2>
+
+        <p class="lead">
+          You may request account deletion within the App, subject to feature
+          availability.
+        </p>
+
+        <ul class="policy-ul">
+          <li>
+            We may suspend or terminate access in cases of abuse, attacks, or
+            illegal activity.
+          </li>
+          <li>
+            For account or data-related requests, contact:
+            <strong>meritledger@163.com</strong>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 8: Contact -->
+      <div class="content-section">
+        <h2>8. Contact</h2>
+
+        <ul class="policy-ul">
+          <li><strong>Email:</strong> meritledger@163.com</li>
+          <li>
+            <strong>Official site:</strong> https://official.meritledger.org
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-text">
+        Last Updated: 2026-01-05<br />
+        © 2026 Merit Ledger. All rights reserved.
+      </div>
+
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </body>
+</html>
