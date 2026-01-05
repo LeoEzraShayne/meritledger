@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="功過格のプライバシーポリシー" />
+    <title>プライバシーポリシー - 功過格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+
+      body {
+        font-family: "Noto Serif JP", "Inter", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        color: var(--text-primary);
+        line-height: 1.8;
+        background: var(--bg-light);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+
+      .lang-switcher .separator {
+        color: var(--border-color);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .meta-row:last-child {
+        border-bottom: none;
+      }
+
+      .meta-label {
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .meta-value {
+        color: var(--text-primary);
+      }
+
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .content-section.highlight {
+        background: rgba(45, 106, 79, 0.05);
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .content-section h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        white-space: pre-line;
+      }
+
+      /* ===== Policy typography upgrade (Section 2 & 3) ===== */
+      .content-section .lead {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 1.25rem;
+      }
+
+      .policy-ol {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--text-secondary);
+      }
+
+      .policy-ol > li {
+        margin: 0.9rem 0;
+      }
+
+      .policy-ol .item-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.35rem;
+      }
+
+      .policy-ul {
+        margin: 0.35rem 0 0.2rem;
+        padding-left: 1.1rem;
+      }
+
+      .policy-ul li {
+        margin: 0.35rem 0;
+        line-height: 1.85;
+        color: var(--text-secondary);
+      }
+
+      .policy-ul li strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .inline-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .inline-link:hover {
+        text-decoration: underline;
+      }
+
+      .callout {
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+        border-radius: 12px;
+        background: rgba(45, 106, 79, 0.06);
+        border: 1px solid rgba(45, 106, 79, 0.18);
+      }
+
+      .callout-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .callout p {
+        margin: 0.25rem 0 0;
+        white-space: normal;
+      }
+
+      /* Mobile tweaks */
+      @media (max-width: 768px) {
+        .policy-ol {
+          padding-left: 1.1rem;
+        }
+      }
+
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-btn:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .content-section {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">
+            <img src="../ic_launcher.png" alt="Merit Ledger logo" />
+          </div>
+          <span>功過格</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="features.html">機能</a></li>
+          <li><a href="guide.html">ガイド</a></li>
+          <li><a href="download.html">ダウンロード</a></li>
+          <li><a href="about.html">について</a></li>
+          <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+          <li><a href="terms-of-service.html">利用規約</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="../privacy-policy.html">EN</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy.html" class="active">日本語</a>
+            <span class="separator">|</span>
+            <a href="../zh/privacy-policy.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">プライバシーポリシー</h1>
+      <p class="page-subtitle">最終更新日: 2026-01-05</p>
+
+      <!-- Meta Information -->
+      <div class="meta-card">
+        <div class="meta-row">
+          <span class="meta-label">施行日:</span>
+          <span class="meta-value">2026-01-05</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">アプリ名:</span>
+          <span class="meta-value">功過格</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">開発者:</span>
+          <span class="meta-value">Merit Ledger Team</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">連絡先メール:</span>
+          <span class="meta-value">meritledger@163.com</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Overview -->
+      <div class="content-section">
+        <h2>1. 概要</h2>
+
+        <p class="lead">
+          当社はユーザーのプライバシーを重視しています。本プライバシーポリシーは、功過格（以下「本アプリ」）
+          および関連ウェブサイト（公式サイト：
+          <a class="inline-link" href="https://official.meritledger.org"
+            >https://official.meritledger.org</a
+          >）における 情報の取り扱い（取得・利用・共有）について説明します。
+        </p>
+
+        <ul class="policy-ul" style="margin-top: 0.25rem">
+          <li>
+            <strong>適用範囲：</strong>
+            本アプリおよび公式サイトの利用に適用されます。
+          </li>
+          <li>
+            <strong>目的：</strong>
+            コア機能の提供とアカウント保護のため、必要な範囲でのみ情報を取り扱います。
+          </li>
+          <li>
+            <strong>同意：</strong>
+            本アプリの利用により、本ポリシーを読み理解したものとみなされます。
+          </li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">お問い合わせ</div>
+          <p>
+            本ポリシーに関するご質問は
+            <strong>meritledger@163.com</strong> までご連絡ください。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 2: Information We Collect -->
+      <div class="content-section">
+        <h2>2. 収集する情報</h2>
+        <p class="lead">
+          当社は、サービス提供に必要な範囲で、以下の情報を取得する場合があります。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">アカウント・認証</div>
+            <ul class="policy-ul">
+              <li>
+                <strong>メールアドレス</strong
+                >（登録、ログイン、認証コード、セキュリティ通知のため）
+              </li>
+              <li>
+                <strong>ログイン方法および識別子</strong>（例：Google
+                サインインの識別子）
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">ユーザーが作成/アップロードする内容</div>
+            <ul class="policy-ul">
+              <li><strong>功/過 記録のテキスト</strong></li>
+              <li>
+                <strong>アップロードした画像</strong>（1 件あたり最大 3 枚）
+              </li>
+              <li><strong>録音した音声</strong>（1 件あたり最大 60 秒）</li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">
+              端末情報・診断ログ（セキュリティ/障害対応）
+            </div>
+            <ul class="policy-ul">
+              <li>
+                <strong>端末モデル、OS バージョン、アプリバージョン</strong>
+              </li>
+              <li><strong>必要最小限のエラーログおよび診断情報</strong></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="lead" style="margin-top: 1rem">
+          当社は、コア機能に無関係な機微情報（例：連絡先や SMS
+          内容）を積極的に取得しません。
+        </p>
+      </div>
+
+      <!-- Section 3: How We Use Information -->
+      <div class="content-section">
+        <h2>3. 利用目的</h2>
+        <p class="lead">当社は情報を以下の目的に限り利用します:</p>
+
+        <ul class="policy-ul" style="margin-top: 0.25rem">
+          <li><strong>コア機能の提供・維持</strong>（記録、統計、同期）</li>
+          <li>
+            <strong>認証およびアカウント保護</strong
+            >（例：ワンタイムのログイン/登録コード）
+          </li>
+          <li>
+            <strong>不正利用防止とシステム保護</strong>（例：レート制限、診断）
+          </li>
+          <li><strong>法令遵守</strong></li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">認証コードメールについて</div>
+          <ul class="policy-ul" style="margin-top: 0.2rem">
+            <li>
+              当社は、ユーザー本人が登録/ログインのために提供したメールアドレスにのみ
+              <strong>ワンタイムコード</strong>を送信します。
+            </li>
+            <li>
+              これらは
+              <strong>取引/セキュリティ</strong>
+              目的のメールであり、マーケティング一斉配信には使用しません。
+            </li>
+            <li>
+              Google
+              などの第三者ログインを選択して、コード利用を減らすこともできます。
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 4: Third Parties & Sharing -->
+      <div class="content-section">
+        <h2>4. 第三者サービスと共有</h2>
+        <p class="lead">
+          当社は個人情報を販売しません。本アプリの運営および必要な機能提供のため、限定されたサービス提供者を利用します。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">Google Sign-In</div>
+            <ul class="policy-ul">
+              <li>第三者ログイン認証およびログインに使用します。</li>
+              <li>
+                ログイン完了に必要な範囲で、基本的な識別子（例：アカウント識別子）を取り扱う場合があります。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">
+              Amazon Web Services（AWS）Simple Email Service（SES）
+            </div>
+            <ul class="policy-ul">
+              <li>
+                <strong>ワンタイム認証コード</strong>および
+                <strong>セキュリティ通知</strong>メールの送信に使用します。
+              </li>
+              <li>
+                これらは
+                <strong>取引/セキュリティ</strong>
+                目的のメールであり、マーケティング一斉配信には使用しません。
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">最小限の共有</div>
+          <p>
+            当社は、サービス提供に必要な最小限の情報のみを共有します。例えば、AWS
+            SES による認証メール送信のために、
+            <strong>宛先メールアドレス</strong> と
+            <strong>メール本文</strong> を送信します。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 5: Storage, Retention & Security -->
+      <div class="content-section">
+        <h2>5. 保存・保持期間・安全対策</h2>
+        <p class="lead">
+          当社は情報を保護するために合理的な対策を講じ、サービス提供およびセキュリティ維持に必要な期間に限って保持します。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">保存</div>
+            <ul class="policy-ul">
+              <li>
+                <strong>ローカル:</strong>
+                一部のデータは端末内に保存される場合があります。
+              </li>
+              <li>
+                <strong>クラウド:</strong>
+                同期機能を有効にした場合、記録はサーバーに保存され、<strong
+                  >HTTPS</strong
+                >
+                で暗号化転送されます。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">保持期間（最小化）</div>
+            <ul class="policy-ul">
+              <li>
+                <strong>アカウント情報:</strong>
+                利用期間中に保持し、削除後は合理的期間内に削除/匿名化（法令により必要な場合を除く）。
+              </li>
+              <li>
+                <strong>認証コード:</strong>
+                ワンタイム用途のみ。使用後/期限切れ後は速やかに削除します。
+              </li>
+              <li>
+                <strong>セキュリティ/診断ログ:</strong>
+                障害対応・不正対策のために保持し、合理的期間後に削除します。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">安全対策</div>
+            <ul class="policy-ul">
+              <li><strong>HTTPS 暗号化</strong>（通信中の保護）。</li>
+              <li><strong>アクセス制御</strong>および最小権限の実践。</li>
+              <li>
+                <strong>不正防止</strong
+                >（例：レート制限）により、認証コードおよびログイン機能を保護します。
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">認証コード機能の保護</div>
+          <p>
+            当社は、レート制限や監視などの対策により、認証コード機能の濫用を抑止し、ユーザーアカウントを保護します。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 6: Your Rights & Contact -->
+      <div class="content-section">
+        <h2>6. ユーザーの権利・お問い合わせ</h2>
+        <p class="lead">
+          ユーザーは個人情報に関して一定の権利を有する場合があります。当社は法令および合理的な範囲でご依頼に対応します。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">ユーザーの権利</div>
+            <ul class="policy-ul">
+              <li>個人情報の <strong>確認</strong></li>
+              <li>個人情報の <strong>訂正</strong></li>
+              <li>
+                個人情報の
+                <strong>削除</strong>（法令/技術上の制約がある場合を除く）
+              </li>
+              <li>
+                <strong>アカウント削除</strong>の申請（アプリ内導線に従います）
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">申請方法</div>
+            <ul class="policy-ul">
+              <li>
+                ご依頼内容と、登録に使用したメールアドレスを添えてご連絡ください。
+              </li>
+              <li>
+                セキュリティのため、アカウント所有の確認をお願いする場合があります。
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">お問い合わせ</div>
+          <ul class="policy-ul" style="margin-top: 0.2rem">
+            <li><strong>メール:</strong> meritledger@163.com</li>
+            <li>
+              <strong>公式サイト:</strong>
+              <a class="inline-link" href="https://official.meritledger.org"
+                >https://official.meritledger.org</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 7: Updates -->
+      <div class="content-section">
+        <h2>7. 改定</h2>
+        <p>
+          当社は本ポリシーを更新する場合があります。重要な変更がある場合、アプリ内通知または公式サイトで告知します。
+        </p>
+      </div>
+
+      <div class="footer-text">
+        最終更新日: 2026-01-05<br />
+        © 2026 Merit Ledger. All rights reserved.
+      </div>
+
+      <a href="../index.html" class="back-btn">← ホームへ戻る</a>
+    </div>
+  </body>
+</html>
