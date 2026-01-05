@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="功过格隐私政策" />
+    <title>隐私政策 - 功过格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+
+      body {
+        font-family: "Noto Serif SC", "Inter", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        color: var(--text-primary);
+        line-height: 1.8;
+        background: var(--bg-light);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+
+      .lang-switcher .separator {
+        color: var(--border-color);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .meta-row:last-child {
+        border-bottom: none;
+      }
+
+      .meta-label {
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .meta-value {
+        color: var(--text-primary);
+      }
+
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .content-section.highlight {
+        background: rgba(45, 106, 79, 0.05);
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .content-section h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        white-space: pre-line;
+      }
+
+      /* ===== Policy typography upgrade (Section 2 & 3) ===== */
+      .content-section .lead {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 1.25rem;
+      }
+
+      .policy-ol {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--text-secondary);
+      }
+
+      .policy-ol > li {
+        margin: 0.9rem 0;
+      }
+
+      .policy-ol .item-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.35rem;
+      }
+
+      .policy-ul {
+        margin: 0.35rem 0 0.2rem;
+        padding-left: 1.1rem;
+      }
+
+      .policy-ul li {
+        margin: 0.35rem 0;
+        line-height: 1.85;
+        color: var(--text-secondary);
+      }
+
+      .policy-ul li strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .inline-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .inline-link:hover {
+        text-decoration: underline;
+      }
+
+      .callout {
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+        border-radius: 12px;
+        background: rgba(45, 106, 79, 0.06);
+        border: 1px solid rgba(45, 106, 79, 0.18);
+      }
+
+      .callout-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .callout p {
+        margin: 0.25rem 0 0;
+        white-space: normal;
+      }
+
+      /* Mobile tweaks */
+      @media (max-width: 768px) {
+        .policy-ol {
+          padding-left: 1.1rem;
+        }
+      }
+
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-btn:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .content-section {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">
+            <img src="../ic_launcher.png" alt="Merit Ledger logo" />
+          </div>
+          <span>功过格</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="features.html">功能</a></li>
+          <li><a href="guide.html">使用指南</a></li>
+          <li><a href="download.html">下载</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="privacy-policy.html">隐私政策</a></li>
+          <li><a href="terms-of-service.html">服务条款</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="../privacy-policy.html">EN</a>
+            <span class="separator">|</span>
+            <a href="../ja/privacy-policy.html">日本語</a>
+            <span class="separator">|</span>
+            <a href="privacy-policy.html" class="active">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">隐私政策</h1>
+      <p class="page-subtitle">最后更新：2026-01-05</p>
+
+      <!-- Meta Information -->
+      <div class="meta-card">
+        <div class="meta-row">
+          <span class="meta-label">生效日期：</span>
+          <span class="meta-value">2026-01-05</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">应用名称：</span>
+          <span class="meta-value">功过格</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">开发者：</span>
+          <span class="meta-value">Merit Ledger Team</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">联系邮箱：</span>
+          <span class="meta-value">meritledger@163.com</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Overview -->
+      <!-- Section 1: Overview -->
+      <div class="content-section">
+        <h2>1. 概述</h2>
+
+        <p class="lead">
+          我们重视您的隐私。本隐私政策用于说明功过格（以下简称“本应用”）以及相关网站
+          （官网：<a class="inline-link" href="https://official.meritledger.org"
+            >https://official.meritledger.org</a
+          >） 如何收集、使用与共享信息。
+        </p>
+
+        <ul class="policy-ul" style="margin-top: 0.25rem">
+          <li>
+            <strong>适用范围：</strong>
+            本政策适用于您访问或使用本应用及官网时的信息处理活动。
+          </li>
+          <li>
+            <strong>处理目的：</strong>
+            我们仅在提供核心功能与保障账号安全所必需的范围内处理信息。
+          </li>
+          <li>
+            <strong>您的确认：</strong>
+            当您使用本应用，即表示您已阅读并理解本隐私政策。
+          </li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">有问题？</div>
+          <p>
+            如对本隐私政策有任何疑问，请联系：<strong>meritledger@163.com</strong>。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 2: Information We Collect -->
+      <div class="content-section">
+        <h2>2. 我们收集的信息</h2>
+        <p class="lead">我们可能会收集以下信息，仅限于提供服务所必需的范围。</p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">账号与认证</div>
+            <ul class="policy-ul">
+              <li>
+                <strong>邮箱地址</strong>（用于注册、登录、验证码与安全通知）
+              </li>
+              <li><strong>登录方式与标识</strong>（例如：Google 登录标识）</li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">您选择创建/上传的内容</div>
+            <ul class="policy-ul">
+              <li><strong>功/过记录文本</strong></li>
+              <li><strong>上传的图片</strong>（每条记录最多 3 张）</li>
+              <li><strong>录制的音频</strong>（每条记录最多 60 秒）</li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">设备与诊断日志（安全与排障）</div>
+            <ul class="policy-ul">
+              <li><strong>设备型号、系统版本、应用版本</strong></li>
+              <li><strong>必要的错误日志与诊断信息</strong></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="lead" style="margin-top: 1rem">
+          我们不会主动收集与核心功能无关的敏感信息（例如通讯录或短信内容）。
+        </p>
+      </div>
+
+      <!-- Section 3: How We Use Information -->
+      <div class="content-section">
+        <h2>3. 我们如何使用信息</h2>
+        <p class="lead">我们仅将信息用于：</p>
+
+        <ul class="policy-ul" style="margin-top: 0.25rem">
+          <li><strong>提供与维护核心功能</strong>（记录、统计、同步）</li>
+          <li>
+            <strong>身份验证与账号安全</strong>（例如一次性登录/注册验证码）
+          </li>
+          <li><strong>防滥用与系统安全</strong>（例如限流、诊断）</li>
+          <li><strong>遵守法律法规</strong></li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">关于验证码邮件</div>
+          <ul class="policy-ul" style="margin-top: 0.2rem">
+            <li>
+              我们仅向您用于注册/登录的邮箱地址发送
+              <strong>一次性验证码</strong>。
+            </li>
+            <li>
+              该类邮件属于 <strong>交易/安全</strong> 类邮件，不用于营销群发。
+            </li>
+            <li>您也可以选择第三方登录（例如 Google）以减少验证码使用。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 4: Third Parties & Sharing -->
+      <div class="content-section">
+        <h2>4. 第三方与共享</h2>
+        <p class="lead">
+          我们不会出售您的个人信息。为运营本应用并提供必要功能，我们会使用少量服务提供商。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">Google Sign-In</div>
+            <ul class="policy-ul">
+              <li>用于第三方登录认证与登录。</li>
+              <li>
+                我们可能会处理完成登录所需的基本标识信息（例如账号标识）。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">
+              Amazon Web Services（AWS）Simple Email Service（SES）
+            </div>
+            <ul class="policy-ul">
+              <li>
+                用于发送 <strong>一次性验证码</strong> 与
+                <strong>安全通知</strong> 邮件。
+              </li>
+              <li>
+                该类邮件属于 <strong>交易/安全</strong> 类邮件，不用于营销群发。
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">最小必要共享</div>
+          <p>
+            我们仅共享提供服务所必需的最少信息。例如，为通过 AWS SES
+            投递验证码邮件，我们会提交
+            <strong>收件邮箱地址</strong> 与
+            <strong>邮件内容</strong> 用于完成投递。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 5: Storage, Retention & Security -->
+      <div class="content-section">
+        <h2>5. 存储、保留与安全</h2>
+        <p class="lead">
+          我们采取合理措施保护您的信息，并仅在提供服务与维护安全所需的范围内保留信息。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">存储</div>
+            <ul class="policy-ul">
+              <li><strong>本地：</strong>部分数据可能保存在您的设备上。</li>
+              <li>
+                <strong>云端：</strong
+                >如您启用同步功能，记录可能存储在服务器端，并通过
+                <strong>HTTPS</strong> 进行传输。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">保留期限（最短必要原则）</div>
+            <ul class="policy-ul">
+              <li>
+                <strong>账号信息：</strong
+                >在您使用期间保留；注销后在合理期限内删除/匿名化（法律要求保留除外）。
+              </li>
+              <li>
+                <strong>验证码：</strong
+                >仅用于一次性验证；使用后或过期后将尽快删除。
+              </li>
+              <li>
+                <strong>安全/诊断日志：</strong
+                >用于排障与防滥用，保留合理期限后删除。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">安全措施</div>
+            <ul class="policy-ul">
+              <li><strong>HTTPS 加密</strong>保护传输过程。</li>
+              <li><strong>访问控制</strong>与最小权限实践。</li>
+              <li>
+                <strong>防滥用机制</strong>（例如限流）保护验证码与登录功能。
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">验证码功能保护</div>
+          <p>
+            我们会通过限流与监控等措施降低验证码功能被滥用的风险，并保护用户账号安全。
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 6: Your Rights & Contact -->
+      <div class="content-section">
+        <h2>6. 您的权利与联系我们</h2>
+        <p class="lead">
+          您对您的个人信息享有一定权利。我们会在符合法律法规与合理范围内处理相关请求。
+        </p>
+
+        <ol class="policy-ol">
+          <li>
+            <div class="item-title">您的权利</div>
+            <ul class="policy-ul">
+              <li><strong>访问</strong>您的信息</li>
+              <li><strong>更正</strong>不准确的信息</li>
+              <li><strong>删除</strong>您的信息（受法律/技术限制的除外）</li>
+              <li><strong>申请注销账号</strong>（以应用内实际入口为准）</li>
+            </ul>
+          </li>
+
+          <li>
+            <div class="item-title">如何提出请求</div>
+            <ul class="policy-ul">
+              <li>请通过邮件提交您的请求，并提供您用于账号的邮箱地址。</li>
+              <li>出于安全考虑，我们可能会要求您验证账号归属。</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">联系我们</div>
+          <ul class="policy-ul" style="margin-top: 0.2rem">
+            <li><strong>邮箱：</strong> meritledger@163.com</li>
+            <li>
+              <strong>官网：</strong>
+              <a class="inline-link" href="https://official.meritledger.org"
+                >https://official.meritledger.org</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 7: Updates -->
+      <div class="content-section">
+        <h2>7. 更新</h2>
+        <p>
+          我们可能会更新本政策。若发生重大变更，我们会通过应用内提示或官网公告进行说明。
+        </p>
+      </div>
+
+      <div class="footer-text">
+        最后更新：2026-01-05<br />
+        © 2026 Merit Ledger. 保留所有权利。
+      </div>
+
+      <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+  </body>
+</html>
