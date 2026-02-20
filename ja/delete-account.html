@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="功過格のアカウント削除案内：アプリ内での削除手順と、削除・保持されるデータについて。"
+    />
+    <title>アカウント削除 - 功過格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary-color: #2d6a4f;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --border-color: #e0e0e0;
+      }
+      body {
+        font-family: "Noto Serif JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text-primary);
+        line-height: 1.8;
+        background: var(--bg-light);
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+      .lang-switcher { display: flex; gap: 0.5rem; align-items: center; }
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+      .lang-switcher .separator { color: var(--border-color); }
+      .nav-links { display: flex; gap: 2rem; list-style: none; }
+      .nav-links a { color: var(--text-primary); text-decoration: none; font-weight: 500; }
+      .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .meta-card,
+      .content-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .meta-row:last-child { border-bottom: none; }
+      .meta-label { font-weight: 600; color: var(--text-secondary); }
+      .content-section h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      .content-section p { color: var(--text-secondary); margin-bottom: 0.6rem; }
+      .step-list,
+      .data-list { margin: 0; padding-left: 1.15rem; color: var(--text-secondary); }
+      .step-list li,
+      .data-list li { margin: 0.55rem 0; }
+      .notice { border-left: 4px solid var(--primary-color); background: rgba(45, 106, 79, 0.06); }
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+      .back-btn {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-btn:hover { text-decoration: underline; }
+      @media (max-width: 768px) {
+        .page-title { font-size: 2rem; }
+        .nav-links { display: none; }
+        .meta-row { flex-direction: column; gap: 0.25rem; }
+        .content-section { padding: 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon"><img src="../ic_launcher.png" alt="功過格ロゴ" /></div>
+          <span>功過格</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="features.html">機能</a></li>
+          <li><a href="guide.html">ガイド</a></li>
+          <li><a href="download.html">ダウンロード</a></li>
+          <li><a href="about.html">について</a></li>
+          <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+          <li><a href="terms-of-service.html">利用規約</a></li>
+          <li><a href="delete-account.html">アカウント削除</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="../delete-account.html">EN</a>
+            <span class="separator">|</span>
+            <a href="delete-account.html" class="active">日本語</a>
+            <span class="separator">|</span>
+            <a href="../zh/delete-account.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">アカウント削除の案内</h1>
+      <p class="page-subtitle">Google Play の要件に対応する公開ページ</p>
+
+      <div class="meta-card">
+        <div class="meta-row"><span class="meta-label">アプリ名:</span><span>功過格</span></div>
+        <div class="meta-row"><span class="meta-label">開発者:</span><span>Merit Ledger Team</span></div>
+        <div class="meta-row"><span class="meta-label">最終更新日:</span><span>2026-02-19</span></div>
+        <div class="meta-row"><span class="meta-label">連絡先:</span><span>meritledger@163.com</span></div>
+      </div>
+
+      <div class="content-section">
+        <h2>1. アプリ内での削除手順</h2>
+        <p>アカウント削除はログイン済みユーザーがアプリ内で実行できます。</p>
+        <ol class="step-list">
+          <li>功過格アプリを開き、ログイン状態を確認します。</li>
+          <li>「マイページ / 設定」を開きます。</li>
+          <li>「アカウントとセキュリティ」（または「アカウント管理」）を開きます。</li>
+          <li>「アカウント削除」をタップします。</li>
+          <li>本人確認を完了し、削除を確定します。</li>
+        </ol>
+      </div>
+
+      <div class="content-section notice">
+        <h2>2. ログインできない場合</h2>
+        <p>
+          端末紛失やログイン不具合などでアクセスできない場合は、
+          <strong>meritledger@163.com</strong> 宛に、登録メールアドレスと必要な確認情報を送信してください。
+          本人確認後に対応します。
+        </p>
+      </div>
+
+      <div class="content-section">
+        <h2>3. 削除されるデータ</h2>
+        <ul class="data-list">
+          <li>アカウント情報と認証連携情報は削除、または匿名化されます。</li>
+          <li>当該アカウントに紐づくクラウド同期データは削除されます。</li>
+          <li>端末上のローカルデータは、リモート削除だけでは自動削除されません。</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>4. データ保持について</h2>
+        <ul class="data-list">
+          <li>申請と本人確認後、合理的な期間内に削除処理を実施します。</li>
+          <li>法令順守・不正対策・紛争対応のため、必要最小限のログを一定期間保持し、その後削除または匿名化します。</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>5. Google Play に登録するリンク</h2>
+        <p>公開URLの例: <strong>https://your-domain/ja/delete-account.html</strong></p>
+      </div>
+
+      <a href="index.html" class="back-btn">&larr; ホームへ戻る</a>
+      <p class="footer-text">© 2025 功過格 (Merit Ledger). アカウント削除とデータ処理の案内。</p>
+    </div>
+  </body>
+</html>
