@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Merit Ledger account deletion guide: how to delete your account in-app and what data is deleted or retained."
+    />
+    <title>Delete Account - Merit Ledger</title>
+    <link rel="icon" href="ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary-color: #2d6a4f;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --border-color: #e0e0e0;
+      }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        background: var(--bg-light);
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+      .lang-switcher { display: flex; gap: 0.5rem; align-items: center; }
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+      .lang-switcher .separator { color: var(--border-color); }
+      .nav-links { display: flex; gap: 2rem; list-style: none; }
+      .nav-links a { color: var(--text-primary); text-decoration: none; font-weight: 500; }
+      .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .meta-card,
+      .content-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .meta-row:last-child { border-bottom: none; }
+      .meta-label { font-weight: 600; color: var(--text-secondary); }
+      .content-section h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      .content-section p { color: var(--text-secondary); margin-bottom: 0.6rem; }
+      .step-list,
+      .data-list { margin: 0; padding-left: 1.15rem; color: var(--text-secondary); }
+      .step-list li,
+      .data-list li { margin: 0.55rem 0; }
+      .notice { border-left: 4px solid var(--primary-color); background: rgba(45, 106, 79, 0.06); }
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+      .back-btn {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-btn:hover { text-decoration: underline; }
+      @media (max-width: 768px) {
+        .page-title { font-size: 2rem; }
+        .nav-links { display: none; }
+        .meta-row { flex-direction: column; gap: 0.25rem; }
+        .content-section { padding: 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><img src="ic_launcher.png" alt="Merit Ledger logo" /></div>
+          <span>Merit Ledger</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="delete-account.html">Delete Account</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="delete-account.html" class="active">EN</a>
+            <span class="separator">|</span>
+            <a href="ja/delete-account.html">日本語</a>
+            <span class="separator">|</span>
+            <a href="zh/delete-account.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">Account Deletion</h1>
+      <p class="page-subtitle">Public page for Google Play account deletion requirement</p>
+
+      <div class="meta-card">
+        <div class="meta-row"><span class="meta-label">App:</span><span>Merit Ledger</span></div>
+        <div class="meta-row"><span class="meta-label">Developer:</span><span>Merit Ledger Team</span></div>
+        <div class="meta-row"><span class="meta-label">Last Updated:</span><span>2026-02-19</span></div>
+        <div class="meta-row"><span class="meta-label">Contact:</span><span>meritledger@163.com</span></div>
+      </div>
+
+      <div class="content-section">
+        <h2>1. How to delete your account in the app</h2>
+        <p>The delete-account feature is available to signed-in users and can be completed in the app:</p>
+        <ol class="step-list">
+          <li>Open Merit Ledger and make sure you are signed in.</li>
+          <li>Go to "Me / Settings".</li>
+          <li>Open "Account & Security" (or "Account Management").</li>
+          <li>Tap "Delete Account".</li>
+          <li>Complete identity verification and confirm deletion.</li>
+        </ol>
+      </div>
+
+      <div class="content-section notice">
+        <h2>2. If you cannot sign in</h2>
+        <p>
+          If you cannot access your account (lost device, sign-in issue, etc.), email
+          <strong>meritledger@163.com</strong> with your account email and required verification info.
+          We will assist after identity verification.
+        </p>
+      </div>
+
+      <div class="content-section">
+        <h2>3. What data is deleted</h2>
+        <ul class="data-list">
+          <li>Account profile and authentication linkage are deleted or anonymized.</li>
+          <li>Cloud-synced records associated with the account are deleted.</li>
+          <li>Local data on your device is not automatically removed by remote account deletion.</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>4. Data retention</h2>
+        <ul class="data-list">
+          <li>After request submission and verification, deletion is processed within a reasonable period.</li>
+          <li>Minimum necessary logs may be retained for legal, security, and dispute handling, then deleted or anonymized.</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>5. Link for Google Play</h2>
+        <p>Use this public URL in Google Play (example): <strong>https://your-domain/delete-account.html</strong></p>
+      </div>
+
+      <a href="index.html" class="back-btn">&larr; Back to Home</a>
+      <p class="footer-text">© 2025 Merit Ledger. Account deletion and data handling policy.</p>
+    </div>
+  </body>
+</html>
