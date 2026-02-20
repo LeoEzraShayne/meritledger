@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="功过格账号删除说明：如何在 App 内删除账号，以及数据删除与保留规则。"
+    />
+    <title>删除账户 - 功过格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+
+      body {
+        font-family: "Noto Serif SC", "Inter", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        color: var(--text-primary);
+        line-height: 1.8;
+        background: var(--bg-light);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+
+      .lang-switcher .separator {
+        color: var(--border-color);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .meta-row:last-child {
+        border-bottom: none;
+      }
+
+      .meta-label {
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .meta-value {
+        color: var(--text-primary);
+      }
+
+      .content-section {
+        background: white;
+        padding: 2.25rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .content-section h2 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .content-section p {
+        color: var(--text-secondary);
+        margin-bottom: 0.6rem;
+      }
+
+      .step-list,
+      .data-list {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: var(--text-secondary);
+      }
+
+      .step-list li,
+      .data-list li {
+        margin: 0.6rem 0;
+      }
+
+      .notice {
+        border-left: 4px solid var(--primary-color);
+        background: rgba(45, 106, 79, 0.06);
+      }
+
+      .notice p {
+        margin: 0;
+      }
+
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-btn:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .meta-row {
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .content-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">
+            <img src="../ic_launcher.png" alt="功过格 logo" />
+          </div>
+          <span>功过格</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="features.html">功能</a></li>
+          <li><a href="guide.html">使用指南</a></li>
+          <li><a href="download.html">下载</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="privacy-policy.html">隐私政策</a></li>
+          <li><a href="terms-of-service.html">服务条款</a></li>
+          <li><a href="delete-account.html">删除账户</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="../delete-account.html">EN</a>
+            <span class="separator">|</span>
+            <a href="../ja/delete-account.html">日本語</a>
+            <span class="separator">|</span>
+            <a href="delete-account.html" class="active">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">删除账户说明</h1>
+      <p class="page-subtitle">用于 Google Play 商品详情展示的公开页面</p>
+
+      <div class="meta-card">
+        <div class="meta-row">
+          <span class="meta-label">应用名称：</span>
+          <span class="meta-value">功过格</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">开发者：</span>
+          <span class="meta-value">Merit Ledger Team</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">最后更新：</span>
+          <span class="meta-value">2026-02-19</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">联系邮箱：</span>
+          <span class="meta-value">meritledger@163.com</span>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>1. 如何在 App 内删除账户</h2>
+        <p>删除账户功能仅对已登录用户开放，您可以在 App 内直接完成操作：</p>
+        <ol class="step-list">
+          <li>打开功过格 App，并确认当前账号已登录。</li>
+          <li>进入“我的 / 设置”。</li>
+          <li>进入“账号与安全（或账户管理）”。</li>
+          <li>点击“删除账户”。</li>
+          <li>按页面提示完成身份验证并确认删除。</li>
+        </ol>
+        <p>
+          不同版本的菜单名称可能略有差异。如果未找到入口，请在设置页搜索“删除账户”，或联系
+          meritledger@163.com 获取协助。
+        </p>
+      </div>
+
+      <div class="content-section notice">
+        <h2>2. 无法登录时如何申请删除</h2>
+        <p>
+          如果您因设备丢失、登录异常等原因无法进入账号，可发送邮件至
+          <strong>meritledger@163.com</strong>，并提供账号绑定邮箱及必要验证信息。我们会在核验身份后协助处理删除请求。
+        </p>
+      </div>
+
+      <div class="content-section">
+        <h2>3. 删除后会处理哪些数据</h2>
+        <ul class="data-list">
+          <li>账号信息：账号标识、登录关联信息将被删除或匿名化处理。</li>
+          <li>云端同步内容：与该账号关联的记录内容将被删除。</li>
+          <li>本地数据：您设备上的本地缓存/本地记录不受远程删除直接影响，可在 App 内或系统设置中自行清理。</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>4. 数据保留与时限</h2>
+        <ul class="data-list">
+          <li>账户删除请求提交并验证成功后，我们将在合理时间内完成处理。</li>
+          <li>为满足安全审计、法律法规或争议处理要求，部分最小必要日志可能在法律允许范围内保留一段时间，随后自动删除或匿名化。</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>5. 你可以填写到 Google Play 的链接</h2>
+        <p>
+          请填写此公开页面 URL（示例）：<strong>https://你的域名/zh/delete-account.html</strong>
+        </p>
+        <p>
+          该页面为公开网页，不要求登录，符合“提供可访问的账户删除说明链接”的要求。
+        </p>
+      </div>
+
+      <a href="index.html" class="back-btn">← 返回首页</a>
+
+      <p class="footer-text">
+        © 2025 功过格 (Merit Ledger). 账户删除与数据处理说明。
+      </p>
+    </div>
+  </body>
+</html>
