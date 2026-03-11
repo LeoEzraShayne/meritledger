@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="功過格 - 特定商取引法に基づく表記" />
+    <title>特定商取引法に基づく表記 - 功過格</title>
+    <link rel="icon" href="../ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+      body {
+        font-family: "Noto Serif JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text-primary);
+        line-height: 1.8;
+        background: var(--bg-light);
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-right: 2.5rem;
+      }
+      .logo span { white-space: nowrap; }
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .nav-right { display: flex; align-items: center; gap: 1.5rem; margin-left: 2.5rem; }
+      .lang-switcher { display: flex; gap: 0.5rem; align-items: center; }
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+      .lang-switcher .separator { color: var(--border-color); }
+      .nav-links { display: flex; gap: 1rem; list-style: none; flex-wrap: nowrap; }
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.8125rem;
+        transition: color 0.3s;
+        white-space: nowrap;
+      }
+      .nav-links a:hover { color: var(--primary-color); }
+      .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+      .page-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .meta-row:last-child { border-bottom: none; }
+      .meta-label { font-weight: 600; color: var(--text-secondary); }
+      .meta-value { color: var(--text-primary); }
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .content-section h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.25rem;
+      }
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        white-space: pre-line;
+      }
+      .content-section .lead {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 1rem;
+      }
+      .policy-ul { margin: 0.35rem 0 0.2rem; padding-left: 1.5rem; }
+      .policy-ul li { margin: 0.35rem 0; line-height: 1.85; color: var(--text-secondary); }
+      .policy-ul li strong { color: var(--text-primary); font-weight: 600; }
+      .inline-link { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+      .inline-link:hover { text-decoration: underline; }
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-btn:hover { text-decoration: underline; }
+      @media (max-width: 768px) {
+        .page-title { font-size: 1.75rem; }
+        .nav-links { display: none; }
+        .content-section { padding: 2rem 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <img src="../ic_launcher.png" alt="功過格 logo" />
+          </div>
+          <span>功過格</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="features.html">機能</a></li>
+          <li><a href="guide.html">ガイド</a></li>
+          <li><a href="download.html">ダウンロード</a></li>
+          <li><a href="about.html">について</a></li>
+          <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+          <li><a href="terms-of-service.html">利用規約</a></li>
+          <li><a href="specified-commercial-transaction.html">特定商取引法に基づく表記</a></li>
+          <li><a href="delete-account.html">アカウント削除</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="../specified-commercial-transaction.html">EN</a>
+            <span class="separator">|</span>
+            <a href="specified-commercial-transaction.html" class="active">日本語</a>
+            <span class="separator">|</span>
+            <a href="../zh/specified-commercial-transaction.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">特定商取引法に基づく表記</h1>
+      <p class="page-subtitle">最終更新：2026年3月10日</p>
+
+      <div class="meta-card">
+        <h2 style="font-size:1.25rem; color:var(--primary-color); margin-bottom:1rem;">1. 基本情報</h2>
+        <div class="meta-row">
+          <span class="meta-label">サービス名：</span>
+          <span class="meta-value">功過格 / Merit Ledger</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">サイト名：</span>
+          <span class="meta-value">Merit Ledger</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">事業者名：</span>
+          <span class="meta-value">Leo Shayne</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">責任者：</span>
+          <span class="meta-value">Leo Shayne</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">連絡メール：</span>
+          <span class="meta-value">contact@meritledger.org</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">電話番号：</span>
+          <span class="meta-value">お客様のご請求に応じ、法令に従い遅滞なく提供いたします。</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">所在地：</span>
+          <span class="meta-value">お客様のご請求に応じ、法令に従い遅滞なく提供いたします。</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">公式サイト：</span>
+          <span class="meta-value"><a class="inline-link" href="https://official.meritledger.org/">https://official.meritledger.org/</a></span>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>2. サービス内容</h2>
+        <p class="lead">「功過格（Merit Ledger）」は、個人向けのデジタル記録・自己管理サービスです。日々の行動記録、自己振り返り、統計の閲覧を通じて、継続的な記録で成長習慣を身につけることをサポートします。</p>
+        <p>本サービスで提供する内容には、以下のようなものが含まれます（これらに限りません）。</p>
+        <ul class="policy-ul">
+          <li>功と過の日々の記録</li>
+          <li>データ統計と可視化</li>
+          <li>個人の成長記録・管理機能</li>
+          <li>会員購読機能（該当する場合）</li>
+          <li>その他、自己管理・自己啓発に関連するデジタル機能・サービス</li>
+        </ul>
+        <p>具体的なサービス内容は、本サイト・アプリ・購入ページ・購読ページまたは関連説明ページに表示される情報に準じます。</p>
+        <p>本サービスは、試験運用・準備段階または段階的公開の段階にある場合があり、正式公開内容は公開時に告知する情報に準じます。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>3. 販売価格</h2>
+        <p>販売価格は、サービスプラン・購読周期・機能範囲・サービス内容等に応じて個別に設定します。</p>
+        <p>具体的な価格は、本サイト・アプリ内の購入ページ・購読ページ・決済ページまたは関連説明ページに表示される価格に準じます。</p>
+        <p>本サービスで購入がまだ正式に開始されていない場合は、価格情報は正式開始時に公表します。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>4. 商品・サービス代金以外の必要料金</h2>
+        <p>本サービスの代金のほか、ご利用にあたり以下の費用をユーザーが負担する場合があります。</p>
+        <ul class="policy-ul">
+          <li>通信料</li>
+          <li>データ通信料</li>
+          <li>端末利用に伴う費用</li>
+          <li>アプリのダウンロード・インストール・利用に必要な費用</li>
+          <li>振込手数料・カード手数料・第三者決済の手数料等（該当する場合）</li>
+        </ul>
+        <p>ユーザー負担となるその他の費用がある場合は、関連ページで別途記載します。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>5. 支払方法</h2>
+        <p>本サービスでは、以下のいずれかまたは複数の支払方法をサポートする予定です。</p>
+        <ul class="policy-ul">
+          <li>クレジットカード</li>
+          <li>デビットカード</li>
+          <li>Stripe 等の第三者決済サービス</li>
+          <li>Google Play アプリ内課金</li>
+          <li>Apple App Store アプリ内課金</li>
+          <li>その他、当サービスが対応する支払方法</li>
+        </ul>
+        <p>実際の支払方法は、購入時点の画面表示に準じます。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>6. 支払時期</h2>
+        <p>有料サービスについては、購入・購読・決済ページに記載された条件に従ってお支払いいただきます。</p>
+        <p>一般的には、以下のとおりです。</p>
+        <ul class="policy-ul">
+          <li><strong>一括購入：</strong>購入確認時に支払い</li>
+          <li><strong>購読：</strong>購読開始時に初回分を支払い、以降は購読周期に応じて自動更新・課金（該当する場合）</li>
+        </ul>
+        <p>支払時期の詳細は、実際のページの記載に準じます。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>7. サービスの提供時期</h2>
+        <p>オンラインのデジタルコンテンツ・会員特典・機能提供その他のサービスは、ユーザーが登録・購入・購読または支払いを完了し、システムで確認された後に提供します。</p>
+        <p>システム保守・ネットワーク障害・第三者プラットフォームの処理・ストア審査・不可抗力その他正当な理由により提供が遅れた場合は、解消後できるだけ早く提供します。</p>
+        <p>本サービスがまだ正式に開始されていない場合は、正式開始後に提供します。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>8. 返金・キャンセル・変更</h2>
+        <p>本サービスはデジタルオンラインサービスです。法令に別段の定めがある場合または本サービスが別途定める場合を除き、購入・購読・支払い完了後、お客様都合による返金は原則としてお受けしておりません。</p>
+        <p>以下の場合は、状況に応じて対応いたします。</p>
+        <ul class="policy-ul">
+          <li>システム障害により購入したサービスを利用できない場合</li>
+          <li>重複課金・誤課金等の支払い異常</li>
+          <li>本サービスの理由により約束した内容を提供できない場合</li>
+          <li>法令上返金すべきとされるその他の場合</li>
+        </ul>
+        <p>Apple App Store・Google Play その他第三者プラットフォームで購入した場合、返金・購読キャンセル・更新停止等は各プラットフォームのルールに従い、当該プラットフォームにてお手続きください。</p>
+        <p>購読の場合は、各プラットフォームまたは本サービスが提供する管理画面で更新を解除できます。法令または特約がなければ、既に開始された現在の購読期間の料金は原則として日割り返金いたしません。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>9. 返品・交換</h2>
+        <p>本サービスはオンラインのデジタルコンテンツ・機能の提供のため、原則として実物商品の返品・交換規定は適用されません。</p>
+        <p>本サービスに重大な瑕疵がある、正常に提供できない、または法令上対応すべき事由がある場合は、以下のいずれかまたは複数の対応を行うことがあります。</p>
+        <ul class="policy-ul">
+          <li>不具合の修正</li>
+          <li>サービス特典の再提供</li>
+          <li>提供期間の延長</li>
+          <li>合理的な代替案の提供</li>
+          <li>返金</li>
+        </ul>
+        <p>具体的な対応は、状況に応じて合理的に決定します。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>10. 利用環境</h2>
+        <p>本サービスを利用するには、ご利用に必要な端末・OS・ブラウザ・アプリバージョン・ネットワーク環境をご自身で用意してください。</p>
+        <p>端末性能・ネットワーク・OSバージョン・ブラウザ互換性・ストア制限・第三者プラットフォームの制限等により利用できない場合、まずご利用環境が要件を満たしているかご確認ください。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>11. 対象者と利用制限</h2>
+        <p>本サービスは一般ユーザーまたは登録ユーザーを対象としています。</p>
+        <p>ご利用にあたっては、本サービスが定める利用規約・プライバシーポリシーその他のルールに従ってください。法令・プラットフォーム規則または利用規約に違反する行為があった場合、本サービスは利用の制限・停止・終了を行うことがあります。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>12. 特記事項</h2>
+        <p>本サービスは、試験運用・プレリリース・段階的公開の段階にある場合があります。</p>
+        <p>本ページの記載は、以下のような事情に応じて更新・変更されることがあります。</p>
+        <ul class="policy-ul">
+          <li>サービス内容の変更</li>
+          <li>機能・プランの変更</li>
+          <li>価格方針の変更</li>
+          <li>法令の要請</li>
+          <li>支払方法の更新</li>
+          <li>運営情報の変更</li>
+          <li>その他合理的な商業上・コンプライアンス上の必要</li>
+        </ul>
+        <p>変更がある場合は、本ページまたは関連ページで随時更新します。</p>
+      </div>
+
+      <div class="content-section">
+        <h2>13. お問い合わせ</h2>
+        <p>本サービス・購入・支払い・返金・購読キャンセル・利用ルールその他取引に関するご質問は、以下までご連絡ください。</p>
+        <ul class="policy-ul">
+          <li><strong>メール：</strong> contact@meritledger.org</li>
+          <li><strong>電話：</strong> お客様のご請求に応じ、法令に従い遅滞なく提供いたします。</li>
+          <li><strong>所在地：</strong> お客様のご請求に応じ、法令に従い遅滞なく提供いたします。</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>14. ページ更新日</h2>
+        <p><strong>最終更新日：</strong> 2026年3月10日</p>
+      </div>
+
+      <div class="footer-text">
+        最終更新：2026年3月10日<br />
+        © 2026 Merit Ledger. All rights reserved.
+      </div>
+
+      <a href="index.html" class="back-btn">← ホームに戻る</a>
+    </div>
+  </body>
+</html>
