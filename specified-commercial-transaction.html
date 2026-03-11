@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Merit Ledger - Transaction Disclosures (Specified Commercial Transaction Act)" />
+    <title>Transaction Disclosures - Merit Ledger</title>
+    <link rel="icon" href="ic_launcher.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary-color: #2d6a4f;
+        --primary-dark: #1e4a35;
+        --text-primary: #1a1a1a;
+        --text-secondary: #666;
+        --bg-light: #f8f9fa;
+        --bg-white: #ffffff;
+        --border-color: #e0e0e0;
+      }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        background: var(--bg-light);
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-right: 2.5rem;
+      }
+      .logo span { white-space: nowrap; }
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .nav-right { display: flex; align-items: center; gap: 1.5rem; margin-left: 2.5rem; }
+      .lang-switcher { display: flex; gap: 0.5rem; align-items: center; }
+      .lang-switcher a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .lang-switcher a:hover,
+      .lang-switcher a.active {
+        color: var(--primary-color);
+        background: rgba(45, 106, 79, 0.1);
+      }
+      .lang-switcher .separator { color: var(--border-color); }
+      .nav-links { display: flex; gap: 1rem; list-style: none; flex-wrap: nowrap; }
+      .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.8125rem;
+        transition: color 0.3s;
+        white-space: nowrap;
+      }
+      .nav-links a:hover { color: var(--primary-color); }
+      .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+      .page-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .meta-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .meta-row:last-child { border-bottom: none; }
+      .meta-label { font-weight: 600; color: var(--text-secondary); }
+      .meta-value { color: var(--text-primary); }
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .content-section h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.25rem;
+      }
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        white-space: pre-line;
+      }
+      .content-section .lead {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        margin-bottom: 1rem;
+      }
+      .policy-ul { margin: 0.35rem 0 0.2rem; padding-left: 1.5rem; }
+      .policy-ul li { margin: 0.35rem 0; line-height: 1.85; color: var(--text-secondary); }
+      .policy-ul li strong { color: var(--text-primary); font-weight: 600; }
+      .inline-link { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+      .inline-link:hover { text-decoration: underline; }
+      .footer-text {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+      .back-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-btn:hover { text-decoration: underline; }
+      @media (max-width: 768px) {
+        .page-title { font-size: 1.75rem; }
+        .nav-links { display: none; }
+        .content-section { padding: 2rem 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <img src="ic_launcher.png" alt="Merit Ledger logo" />
+          </div>
+          <span>Merit Ledger</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="specified-commercial-transaction.html">Transaction Disclosure</a></li>
+          <li><a href="delete-account.html">Delete Account</a></li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-switcher">
+            <a href="specified-commercial-transaction.html" class="active">EN</a>
+            <span class="separator">|</span>
+            <a href="ja/specified-commercial-transaction.html">日本語</a>
+            <span class="separator">|</span>
+            <a href="zh/specified-commercial-transaction.html">中文</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">Transaction Disclosures</h1>
+      <p class="page-subtitle" style="margin-bottom:0.5rem;">Specified Commercial Transaction Act – Required Disclosures</p>
+      <p class="page-subtitle">Last updated: March 10, 2026</p>
+
+      <div class="meta-card">
+        <h2 style="font-size:1.25rem; color:var(--primary-color); margin-bottom:1rem;">1. Basic Information</h2>
+        <div class="meta-row">
+          <span class="meta-label">Service name:</span>
+          <span class="meta-value">Merit Ledger</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Website name:</span>
+          <span class="meta-value">Merit Ledger</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Operator:</span>
+          <span class="meta-value">Leo Shayne</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Responsible person:</span>
+          <span class="meta-value">Leo Shayne</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contact email:</span>
+          <span class="meta-value">contact@meritledger.org</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contact phone:</span>
+          <span class="meta-value">Provided upon user request in accordance with applicable law.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contact address:</span>
+          <span class="meta-value">Provided upon user request in accordance with applicable law.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Official website:</span>
+          <span class="meta-value"><a class="inline-link" href="https://official.meritledger.org/">https://official.meritledger.org/</a></span>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>2. Service Description</h2>
+        <p class="lead">Merit Ledger is a digital recording and self-management service for individual users. It helps you record daily behavior, reflect on yourself, view statistics, and build lasting habits through consistent use.</p>
+        <p>Services include, but are not limited to:</p>
+        <ul class="policy-ul">
+          <li>Daily recording of merits and demerits</li>
+          <li>Statistics and visualizations</li>
+          <li>Personal growth records and management</li>
+          <li>Membership subscription (where applicable)</li>
+          <li>Other digital features related to self-management and self-improvement</li>
+        </ul>
+        <p>Actual service content is as shown on this website, in the app, or on purchase, subscription, or related pages.</p>
+        <p>The service may be in test, preparation, or phased rollout. Final offerings will be as announced at launch.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>3. Price</h2>
+        <p>Prices are set by plan, subscription period, feature set, or service scope.</p>
+        <p>Exact prices are as shown on this website and in the app (purchase, subscription, checkout, or related pages).</p>
+        <p>If purchase is not yet available, prices will be published when it launches.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>4. Additional Required Costs</h2>
+        <p>Besides the service price, you may bear:</p>
+        <ul class="policy-ul">
+          <li>Network / connectivity fees</li>
+          <li>Data usage</li>
+          <li>Device-related costs</li>
+          <li>Costs for downloading, installing, or using the app</li>
+          <li>Bank transfer, card, or third-party payment fees (where applicable)</li>
+        </ul>
+        <p>Any other user-borne costs will be stated on the relevant pages.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>5. Payment Methods</h2>
+        <p>The service supports or will support one or more of:</p>
+        <ul class="policy-ul">
+          <li>Credit card</li>
+          <li>Debit card</li>
+          <li>Third-party payment (e.g. Stripe)</li>
+          <li>Google Play in-app purchase</li>
+          <li>Apple App Store in-app purchase</li>
+          <li>Other methods supported at the time</li>
+        </ul>
+        <p>Actual payment methods are as shown at the time of purchase.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>6. Timing of Payment</h2>
+        <p>For paid services, payment is due as indicated on the purchase, subscription, or checkout page.</p>
+        <p>Generally:</p>
+        <ul class="policy-ul">
+          <li><strong>One-time purchase:</strong> payment at confirmation of purchase</li>
+          <li><strong>Subscription:</strong> first payment when you subscribe; subsequent charges per billing cycle (where applicable)</li>
+        </ul>
+        <p>Exact timing is as stated on the relevant pages.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>7. When Service Is Provided</h2>
+        <p>Online digital content, membership benefits, or feature access are provided after you complete registration, purchase, subscription, or payment and the system confirms it.</p>
+        <p>If delivery is delayed due to maintenance, network issues, third-party processing, store review, force majeure, or other valid reasons, we will provide the service as soon as practicable after the cause is resolved.</p>
+        <p>If the service is not yet launched, it will be provided after official launch.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>8. Refunds, Cancellation, and Changes</h2>
+        <p>This is a digital online service. Unless the law or we explicitly provide otherwise, we generally do not offer refunds for personal reasons after purchase, subscription, or payment.</p>
+        <p>We may handle the following as appropriate:</p>
+        <ul class="policy-ul">
+          <li>System failure preventing use of purchased service</li>
+          <li>Duplicate or erroneous charges</li>
+          <li>Our failure to provide what was agreed</li>
+          <li>Other cases where the law requires a refund</li>
+        </ul>
+        <p>If you purchased via Apple App Store, Google Play, or another platform, refunds, cancellation, and renewal are subject to that platform’s rules; please use that platform’s process.</p>
+        <p>For subscriptions, you can cancel renewal in the platform or in our management page. Unless required by law or otherwise stated, fees for the current period already in effect are generally not refunded on a pro-rata basis.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>9. Returns and Exchanges</h2>
+        <p>This service is online digital content and features; physical product return or exchange rules do not apply.</p>
+        <p>If the service has a material defect, cannot be provided normally, or the law requires action, we may take one or more of:</p>
+        <ul class="policy-ul">
+          <li>Fix the issue</li>
+          <li>Re-provide benefits</li>
+          <li>Extend the service period</li>
+          <li>Offer a reasonable alternative</li>
+          <li>Refund</li>
+        </ul>
+        <p>We will decide the approach reasonably based on the situation.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>10. Use Environment</h2>
+        <p>You need your own device, OS, browser, app version, and network that meet the requirements to use the service.</p>
+        <p>If you cannot use the service due to device, network, OS, browser, store, or third-party limits, please confirm that your environment meets the requirements.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>11. Eligibility and Restrictions</h2>
+        <p>The service is offered to general or registered users.</p>
+        <p>You must comply with our user agreement, privacy policy, and other rules. We may restrict, suspend, or terminate service if you violate laws, platform rules, or our terms.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>12. Special Notes</h2>
+        <p>The service may be in test, pre-release, or phased rollout.</p>
+        <p>Information on this page may be updated when:</p>
+        <ul class="policy-ul">
+          <li>Service content changes</li>
+          <li>Features or plans change</li>
+          <li>Pricing changes</li>
+          <li>Law requires it</li>
+          <li>Payment methods are updated</li>
+          <li>Operator information changes</li>
+          <li>Other reasonable business or compliance needs</li>
+        </ul>
+        <p>We will update this or related pages when changes occur.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>13. Contact</h2>
+        <p>For questions about the service, purchase, payment, refunds, cancellation, or other transaction matters, contact us at:</p>
+        <ul class="policy-ul">
+          <li><strong>Email:</strong> contact@meritledger.org</li>
+          <li><strong>Phone:</strong> Provided upon user request in accordance with applicable law.</li>
+          <li><strong>Address:</strong> Provided upon user request in accordance with applicable law.</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>14. Page Update Date</h2>
+        <p><strong>Last updated:</strong> March 10, 2026</p>
+      </div>
+
+      <div class="footer-text">
+        Last updated: March 10, 2026<br />
+        © 2026 Merit Ledger. All rights reserved.
+      </div>
+
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </body>
+</html>
