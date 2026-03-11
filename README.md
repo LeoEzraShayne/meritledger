@@ -38,7 +38,7 @@
 
 如果您有任何问题、建议或反馈，欢迎联系我们：
 
-- **邮箱：** meritledger@163.com
+- **邮箱：** contact@meritledger.org
 - **应用版本：** 1.0.0
 - **传承：** SINCE 1606
 
