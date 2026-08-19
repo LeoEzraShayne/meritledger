@@ -1,0 +1,25 @@
+# Merit Ledger (功过格 / 功過格)
+
+> Merit Ledger is a privacy-focused self-reflection and behavior-tracking application. It helps people record daily positive and negative actions, add notes or media, review history, and understand patterns through statistics.
+
+Official website: https://official.meritledger.org/
+Web application: https://web.meritledger.org/
+Android application: https://play.google.com/store/apps/details?id=com.meritledger.app
+Contact: contact@meritledger.org
+
+## Languages
+
+- English: https://official.meritledger.org/
+- Simplified Chinese (功过格): https://official.meritledger.org/zh/
+- Japanese (功過格): https://official.meritledger.org/ja/
+
+## Key pages
+
+- Features: https://official.meritledger.org/features
+- User guide: https://official.meritledger.org/guide
+- Download and access: https://official.meritledger.org/download
+- About and contact: https://official.meritledger.org/about
+- Privacy policy: https://official.meritledger.org/privacy-policy
+- Terms of service: https://official.meritledger.org/terms-of-service
+
+This file is a concise navigation aid. The linked HTML pages are the authoritative source.
