@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="功過格（Merit Ledger）のWeb版を利用するか、Google PlayからAndroidアプリをダウンロードできます。公式リンクと対応状況をご確認ください。">
+    <meta name="description" content="功過格のAndroid debug APKをダウンロード、またはWeb版をご利用ください。">
     <title>功過格（Merit Ledger）をダウンロード | Web・Android</title>
     <link rel="canonical" href="https://official.meritledger.org/ja/download">
     <link rel="alternate" hreflang="en" href="https://official.meritledger.org/download">
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="功過格（Merit Ledger）">
     <meta property="og:title" content="功過格（Merit Ledger）をダウンロード">
-    <meta property="og:description" content="功過格Web版とGoogle Play Androidアプリの公式リンク。">
+    <meta property="og:description" content="功過格のAndroid debug APKとWeb版の公式リンク。">
     <meta property="og:url" content="https://official.meritledger.org/ja/download">
     <meta property="og:image" content="https://official.meritledger.org/ic_launcher_jp.png">
     <link rel="icon" href="../ic_launcher_jp.png" type="image/png">
@@ -168,7 +168,7 @@
         
         .download-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -187,9 +187,6 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
         
-        .download-card.coming-soon {
-            opacity: 0.8;
-        }
         
         .platform-icon {
             font-size: 4rem;
@@ -218,10 +215,6 @@
             margin-bottom: 1.5rem;
         }
         
-        .status-badge.coming-soon {
-            background: #fff3cd;
-            color: #856404;
-        }
         
         .status-badge.available {
             background: #d4edda;
@@ -360,19 +353,10 @@
             <div class="download-card">
                 <div class="platform-icon">🤖</div>
                 <h2 class="platform-name">Android</h2>
-                <div class="status-badge available">公開中</div>
-                <p class="platform-status">Google Play から功過格をダウンロードできます</p>
-                <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.meritledger.app" target="_blank" rel="noopener noreferrer">Google Play で入手</a>
+                <div class="status-badge available">Debug テスト版</div>
+                <p class="platform-status">Android debug APKを直接ダウンロード</p>
+                <a class="btn-download" href="/downloads/merit-ledger-2026-11-02.apk" download="merit-ledger-2026-11-02.apk">APKをダウンロード</a>
             </div>
-
-            <div class="download-card coming-soon">
-                <div class="platform-icon">🍎</div>
-                <h2 class="platform-name">iOS</h2>
-                <div class="status-badge coming-soon">開発中</div>
-                <p class="platform-status">iOS版は現在開発中です</p>
-                <button class="btn-download" disabled>近日公開</button>
-            </div>
-
             <div class="download-card">
                 <div class="platform-icon">🌐</div>
                 <h2 class="platform-name">Web</h2>
@@ -384,20 +368,13 @@
 
         <div class="info-section">
             <h2>📱 ダウンロード手順</h2>
-            <p>功過格は現在アプリストアでのリリース準備中です。利用可能になり次第、以下からダウンロードできます：</p>
+            <p>APKをダウンロードしてAndroid debug版をインストールするか、Web版をご利用ください。</p>
             
             <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">Androidユーザー</h3>
             <ul>
-                <li>Google Playストアで「功過格」を検索</li>
-                <li>または <a href="https://play.google.com/store/apps/details?id=com.meritledger.app" target="_blank" rel="noopener noreferrer">Google Play の配布ページ</a> にアクセス</li>
-                <li>Android 5.0以上が必要です</li>
-            </ul>
-            
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">iOSユーザー</h3>
-            <ul>
-                <li>iOS版は現在開発中です</li>
-                <li>App Storeで利用可能になる予定です</li>
-                <li>iOS 12.0以上が必要です</li>
+                <li>上の「APKをダウンロード」からインストールファイルを保存します。</li>
+                <li>APKを開き、必要に応じてこの提供元からのインストールを許可してください。</li>
+                <li>Android 7.0以上が必要です。</li>
             </ul>
 
             <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">Webユーザー</h3>
@@ -407,15 +384,8 @@
                 <li>デスクトップ・モバイルの主要ブラウザで利用できます</li>
             </ul>
             
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">ベータテスト</h3>
-            <p>アプリを早期に試したい場合は、ベータアクセス（APKファイル）についてお問い合わせください。</p>
-            <p style="margin-top: 1rem;"><strong>連絡先：</strong> support@gongguoge.com</p>
-        </div>
-
-        <div class="info-section" style="margin-top: 2rem;">
-            <h2>🔔 リリース通知</h2>
-            <p>アプリがリリースされ次第、このページでダウンロードリンクを更新します。更新通知については、お知らせもご確認ください。</p>
-            <p style="margin-top: 1rem;">予定リリース時期：<strong>2025年第4四半期</strong></p>
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">テスト版のインストール</h3>
+            <p>このAPKはdebugテスト版です。異なる署名のバージョンがインストールされている場合は、データをバックアップしてから旧版をアンインストールし、このAPKをインストールしてください。</p>
         </div>
 
         <a href="../index.html" class="back-btn">← ホームに戻る</a>

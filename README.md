@@ -49,3 +49,15 @@
 "过由心造，亦由心改"
 
 —— 袁了凡《了凡四训》
+
+## 官网 Android debug 安装包
+
+在本仓库与 `merit-ledger-android` 同级时运行：
+
+```sh
+./scripts/package-android-debug.sh
+```
+
+脚本先构建 `assembleDebug`，再将 APK 复制到官网 `downloads/`，并同步更新中、英、日三个下载页。文件名为 `merit-ledger-YYYY-MM-DD.apk`，日期采用日本时区的实际打包日期。可用 `ANDROID_PROJECT_DIR` 指定安卓项目路径。APK 超过 Cloudflare Pages 的 25 MiB 单文件限制，因此 `downloads/*.apk` 不提交到 Git。脚本会同步生成 `_redirects`，将官网 APK 下载路径跳转到对应 GitHub Release 附件。
+
+发布时先将 APK 上传到本仓库的 `android-debug-YYYY-MM-DD` Release（标记为预发布），再提交并推送页面与 `_redirects` 到 `main`，由 Cloudflare Pages 自动部署。Release 附件必须使用相同文件名。

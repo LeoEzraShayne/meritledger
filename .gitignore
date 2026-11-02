@@ -7,3 +7,6 @@ Thumbs.db
 *~
 .idea/
 .vscode/
+
+# APK binaries are published as GitHub Release assets, not Pages files.
+/downloads/*.apk
